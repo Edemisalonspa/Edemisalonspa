@@ -1959,13 +1959,13 @@
                 </div>
                 
                 <div class="contact-form">
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias.html">
+    <form name="contact" method="POST" netlify netlify-honeypot="bot-field" action="/gracias.html">
         <!-- Campo oculto REQUERIDO por Netlify -->
         <input type="hidden" name="form-name" value="contact">
         
-        <!-- Campo honeypot para spam -->
-        <div class="form-group" style="display: none;">
-            <label>No llenar este campo si eres humano: <input name="bot-field"></label>
+        <!-- Campo honeypot para spam (debe estar oculto) -->
+        <div style="position: absolute; left: -5000px;">
+            <label>No llenar este campo: <input name="bot-field"></label>
         </div>
         
         <div class="form-header">
