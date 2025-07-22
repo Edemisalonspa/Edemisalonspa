@@ -1,0 +1,13 @@
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/gracias.html"
+  to = "/gracias.html"
+  status = 200
+
+# Configuración para procesamiento de formularios
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
