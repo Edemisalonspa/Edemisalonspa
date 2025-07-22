@@ -1,29 +1,66 @@
 backend:
   name: git-gateway
   branch: main
+  commit_messages:
+    create: "Crear {{collection}} '{{slug}}'"
+    update: "Actualizar {{collection}} '{{slug}}'"
+    delete: "Eliminar {{collection}} '{{slug}}'"
+    uploadMedia: "Subir imagen [skip ci]"
+    deleteMedia: "Eliminar imagen [skip ci]"
 
-media_folder: "assets/img"
-public_folder: "/assets/img"
+# Configuración de medios
+media_folder: "assets/img/uploads"  # Mejor separar las uploads
+public_folder: "/assets/img/uploads"
+open_authoring: true  # Permite contribuciones externas
+
+# Configuración global del CMS
+locale: "es"  # Idioma español
+publish_mode: editorial_workflow  # Opcional: permite borradores
 
 collections:
   - name: "testimonios"
     label: "Testimonios"
+    label_singular: "Testimonio"
     folder: "_data/testimonios"
     create: true
+    identifier_field: "name"
+    format: "json"
     fields:
-      - {label: "Nombre", name: "name", widget: "string"}
-      - {label: "Rol", name: "role", widget: "string"}
-      - {label: "Texto", name: "text", widget: "text"}
-      - {label: "Foto", name: "avatar", widget: "image"}
+      - {label: "Nombre", name: "name", widget: "string", pattern: ["^.{3,}$", "Mínimo 3 caracteres"]}
+      - {label: "Rol/Relación", name: "role", widget: "string", hint: "Ej: 'Cliente frecuente', 'Novia', etc."}
+      - {label: "Texto del testimonio", name: "text", widget: "text", required: true}
+      - {label: "Foto de perfil", name: "avatar", widget: "image", required: false, media_library: {config: {multiple: false}}}
+      - {label: "Destacado", name: "featured", widget: "boolean", required: false, default: false}
 
   - name: "servicios"
     label: "Servicios"
+    label_singular: "Servicio"
     folder: "_data/servicios"
     create: true
+    identifier_field: "title"
+    format: "json"
+    summary: "{{title}} - {{category}} ({{price}})"
     fields:
-      - {label: "Título", name: "title", widget: "string"}
-      - {label: "Descripción", name: "description", widget: "text"}
-      - {label: "Precio", name: "price", widget: "string"}
-      - {label: "Duración", name: "duration", widget: "string"}
-      - {label: "Imagen", name: "image", widget: "image"}
-      - {label: "Categoría", name: "category", widget: "select", options: ["peinados", "tintes", "tratamientos"]}
+      - {label: "Título", name: "title", widget: "string", required: true}
+      - {label: "Descripción", name: "description", widget: "markdown", required: true}
+      - {label: "Precio", name: "price", widget: "string", pattern: ["^S\/\\s?\\d+", "Formato: S/ 100"]}
+      - {label: "Duración estimada", name: "duration", widget: "string", hint: "Ej: '1-2 horas'"}
+      - {label: "Imagen principal", name: "image", widget: "image", required: true}
+      - {label: "Galería adicional", name: "gallery", widget: "list", field: {label: "Imagen", name: "image", widget: "image"}, required: false}
+      - label: "Categoría"
+        name: "category"
+        widget: "select"
+        options:
+          - {label: "Peinados para Eventos", value: "peinados"}
+          - {label: "Tintes Profesionales", value: "tintes"}
+          - {label: "Tratamientos Capilares", value: "tratamientos"}
+      - {label: "Destacado", name: "featured", widget: "boolean", default: false}
+      - {label: "Mostrar en inicio", name: "show_home", widget: "boolean", default: false}
+
+# Configuración adicional recomendada
+display_url: "https://tusitio.com/admin"  # URL de tu admin
+site_url: "https://tusitio.com"  # URL de tu sitio
+show_preview_links: true  # Permite previsualizar
+slug:
+  encoding: "ascii"  # Para slugs limpios
+  clean_accents: true
