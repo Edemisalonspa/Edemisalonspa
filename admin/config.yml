@@ -1,1 +1,29 @@
+backend:
+  name: git-gateway
+  branch: main
 
+media_folder: "assets/img"
+public_folder: "/assets/img"
+
+collections:
+  - name: "testimonios"
+    label: "Testimonios"
+    folder: "_data/testimonios"
+    create: true
+    fields:
+      - {label: "Nombre", name: "name", widget: "string"}
+      - {label: "Rol", name: "role", widget: "string"}
+      - {label: "Texto", name: "text", widget: "text"}
+      - {label: "Foto", name: "avatar", widget: "image"}
+
+  - name: "servicios"
+    label: "Servicios"
+    folder: "_data/servicios"
+    create: true
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Descripción", name: "description", widget: "text"}
+      - {label: "Precio", name: "price", widget: "string"}
+      - {label: "Duración", name: "duration", widget: "string"}
+      - {label: "Imagen", name: "image", widget: "image"}
+      - {label: "Categoría", name: "category", widget: "select", options: ["peinados", "tintes", "tratamientos"]}
