@@ -1,14 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Meta Tags Esenciales -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="15 años de experiencia en tintes profesionales, tratamientos capilares y peinados para bodas, quinceañeras y eventos en Huancayo. Agenda tu cita por WhatsApp.">
+    <meta name="keywords" content="salón de belleza Huancayo, tintes profesionales, peinados para bodas, tratamientos capilares, coloración profesional, keratina, botox capilar">
+    <meta name="author" content="Edemi Salón Spa">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#E75480">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://edemisalonspa.com/">
+    <meta property="og:title" content="Edemi Salón Spa - Tintes Profesionales y Peinados para Eventos en Huancayo">
+    <meta property="og:description" content="15 años de experiencia en tintes profesionales y peinados para eventos especiales. Agenda tu cita por WhatsApp.">
+    <meta property="og:image" content="https://edemisalonspa.com/assets/img/logo/logo-edemi-square.webp">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="600">
+    <meta property="og:locale" content="es_PE">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://edemisalonspa.com/">
+    <meta property="twitter:title" content="Edemi Salón Spa - Tintes Profesionales y Peinados para Eventos en Huancayo">
+    <meta property="twitter:description" content="15 años de experiencia en tintes profesionales y peinados para eventos especiales. Agenda tu cita por WhatsApp.">
+    <meta property="twitter:image" content="https://edemisalonspa.com/assets/img/logo/logo-edemi-square.webp">
+
     <title>Edemi Salón Spa - Tintes Profesionales y Peinados para Eventos en Huancayo</title>
-    <meta name="description" content="15 años de experiencia en tintes profesionales, tratamientos capilares y peinados para bodas, quinceañeras y eventos. Agenda tu cita por WhatsApp.">
+    
+    <!-- Favicon y Apple Touch Icon -->
+    <link rel="icon" type="image/webp" href="assets/img/logo/logo-edemi-square.webp">
+    <link rel="apple-touch-icon" href="assets/img/logo/logo-edemi-square.webp">
+    
+    <!-- Preconexión y precarga de recursos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"></noscript>
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+    
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "name": "Edemi Salón Spa",
+      "image": "https://edemisalonspa.com/assets/img/logo/logo-edemi-square.webp",
+      "@id": "https://edemisalonspa.com",
+      "url": "https://edemisalonspa.com",
+      "telephone": "+51974161367",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Evitamiento 123",
+        "addressLocality": "Huancayo",
+        "addressRegion": "Junín",
+        "postalCode": "12000",
+        "addressCountry": "PE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-12.067158",
+        "longitude": "-75.209562"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "20:00"
+      },
+      "priceRange": "$$",
+      "sameAs": [
+        "https://www.facebook.com/edemisalonspa",
+        "https://www.instagram.com/edemisalonspa"
+      ]
+    }
+    </script>
+
     <style>
         :root {
             --primary: #E75480; /* Rosa fucsia principal */
@@ -55,6 +132,7 @@
         img {
             max-width: 100%;
             height: auto;
+            display: block;
         }
 
         .container {
@@ -355,7 +433,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(255, 209, 220, 0.9), rgba(255, 209, 220, 0.9)), url('img/hero-bg.jpg');
+            background: linear-gradient(rgba(255, 209, 220, 0.9), rgba(255, 209, 220, 0.9)), url('assets/img/hero-bg.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -909,11 +987,6 @@
             margin-top: 3px;
         }
 
-        .contact-info-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
         .contact-form {
             background-color: var(--gray);
             padding: 30px;
@@ -1313,8 +1386,12 @@
     <header>
         <div class="container header-container">
             <div class="branding">
-                <a href="#" class="logo">
-                    <img src="img/logo-edemi-square.webp" alt="Edemi Salón Spa">
+                <a href="/" class="logo" aria-label="Edemi Salón Spa - Inicio">
+                    <img src="assets/img/logo/logo-edemi-square.webp" 
+                         alt="Edemi Salón Spa" 
+                         width="60" 
+                         height="60"
+                         loading="eager">
                 </a>
                 <div class="brand-text">
                     <h1 class="brand-name">Edemi Salón Spa</h1>
@@ -1331,7 +1408,7 @@
                 <a href="#contact" class="btn btn-primary btn-sm">Contacto</a>
             </nav>
             
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" aria-label="Abrir menú">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -1340,11 +1417,11 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu">
         <div class="mobile-menu-header">
-            <a href="#" class="mobile-menu-logo">
-                <img src="img/logo-edemi-square.webp" alt="Edemi Salón Spa">
+            <a href="/" class="mobile-menu-logo" aria-label="Edemi Salón Spa - Inicio">
+                <img src="assets/img/logo/logo-edemi-square.webp" alt="Edemi Salón Spa" width="40" height="40">
                 <span class="mobile-logo-text">Edemi</span>
             </a>
-            <button class="mobile-menu-close">
+            <button class="mobile-menu-close" aria-label="Cerrar menú">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -1387,7 +1464,7 @@
             
             <div class="about-container">
                 <div class="about-image">
-                    <img src="img/about-us.jpg" alt="Salón de belleza Edemi">
+                    <img src="assets/img/about-us.jpg" alt="Salón de belleza Edemi" width="600" height="400" loading="lazy">
                 </div>
                 
                 <div class="about-content">
@@ -1449,7 +1526,7 @@
                     <div class="service-card">
                         <div class="service-badge">¡Más solicitado!</div>
                         <div class="service-image">
-                            <img src="img/services/peinado-boda.jpg" alt="Peinado para boda">
+                            <img src="assets/img/services/peinado-boda.jpg" alt="Peinado para boda" width="400" height="250" loading="lazy">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">Peinados para Bodas</h3>
@@ -1468,7 +1545,7 @@
                     <!-- Peinado 2 -->
                     <div class="service-card">
                         <div class="service-image">
-                            <img src="img/services/peinado-quince.jpg" alt="Peinado para quinceañera">
+                            <img src="assets/img/services/peinado-quince.jpg" alt="Peinado para quinceañera" width="400" height="250" loading="lazy">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">Peinados para Quinceañeras</h3>
@@ -1487,7 +1564,7 @@
                     <!-- Peinado 3 -->
                     <div class="service-card">
                         <div class="service-image">
-                            <img src="img/services/peinado-graduacion.jpg" alt="Peinado para graduación">
+                            <img src="assets/img/services/peinado-graduacion.jpg" alt="Peinado para graduación" width="400" height="250" loading="lazy">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">Peinados para Graduaciones</h3>
@@ -1511,7 +1588,7 @@
                     <div class="service-card">
                         <div class="service-badge">Recomendado</div>
                         <div class="service-image">
-                            <img src="img/services/tinte-completo.jpg" alt="Tinte profesional">
+                            <img src="assets/img/services/tinte-completo.jpg" alt="Tinte profesional" width="400" height="250" loading="lazy">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">Tinte Profesional Completo</h3>
@@ -1530,7 +1607,7 @@
                     <!-- Tinte 2 -->
                     <div class="service-card">
                         <div class="service-image">
-                            <img src="img/services/mechas-californianas.jpg" alt="Mechas californianas">
+                            <img src="assets/img/services/mechas-californianas.jpg" alt="Mechas californianas" width="400" height="250" loading="lazy">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">Mechas Californianas</h3>
@@ -1549,7 +1626,7 @@
                     <!-- Tinte 3 -->
                     <div class="service-card">
                         <div class="service-image">
-                            <img src="img/services/color-fantasia.jpg" alt="Color fantasía">
+                            <img src="assets/img/services/color-fantasia.jpg" alt="Color fantasía" width="400" height="250" loading="lazy">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">Color Fantasía</h3>
@@ -1573,7 +1650,7 @@
                     <div class="service-card">
                         <div class="service-badge">Popular</div>
                         <div class="service-image">
-                            <img src="img/services/keratina.jpg" alt="Tratamiento de keratina">
+                            <img src="assets/img/services/keratina.jpg" alt="Tratamiento de keratina" width="400" height="250" loading="lazy">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">Tratamiento de Keratina</h3>
@@ -1592,7 +1669,7 @@
                     <!-- Tratamiento 2 -->
                     <div class="service-card">
                         <div class="service-image">
-                            <img src="img/services/botox-capilar.jpg" alt="Botox capilar">
+                            <img src="assets/img/services/botox-capilar.jpg" alt="Botox capilar" width="400" height="250" loading="lazy">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">Botox Capilar</h3>
@@ -1611,7 +1688,7 @@
                     <!-- Tratamiento 3 -->
                     <div class="service-card">
                         <div class="service-image">
-                            <img src="img/services/hidratacion-profunda.jpg" alt="Hidratación profunda">
+                            <img src="assets/img/services/hidratacion-profunda.jpg" alt="Hidratación profunda" width="400" height="250" loading="lazy">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">Hidratación Profunda</h3>
@@ -1647,7 +1724,7 @@
             
             <div class="advice-container">
                 <div class="advice-image">
-                    <img src="img/style-advice.jpg" alt="Asesoría de estilo">
+                    <img src="assets/img/style-advice.jpg" alt="Asesoría de estilo" width="600" height="400" loading="lazy">
                 </div>
                 <div class="advice-content">
                     <div class="advice-item">
@@ -1683,7 +1760,7 @@
                 <div class="gallery-grid">
                     <!-- Image 1 -->
                     <div class="gallery-item">
-                        <img src="img/gallery/trabajo-1.jpg" alt="Tinte profesional">
+                        <img src="assets/img/gallery/trabajo-1.jpg" alt="Tinte profesional - Cliente María" width="400" height="250" loading="lazy">
                         <div class="gallery-overlay">
                             <div class="gallery-caption">Tinte profesional - Cliente María</div>
                         </div>
@@ -1691,7 +1768,7 @@
                     
                     <!-- Image 2 -->
                     <div class="gallery-item">
-                        <img src="img/gallery/trabajo-2.jpg" alt="Peinado para boda">
+                        <img src="assets/img/gallery/trabajo-2.jpg" alt="Peinado para boda - Cliente Ana" width="400" height="250" loading="lazy">
                         <div class="gallery-overlay">
                             <div class="gallery-caption">Peinado para boda - Cliente Ana</div>
                         </div>
@@ -1699,7 +1776,7 @@
                     
                     <!-- Image 3 -->
                     <div class="gallery-item">
-                        <img src="img/gallery/trabajo-3.jpg" alt="Corte moderno">
+                        <img src="assets/img/gallery/trabajo-3.jpg" alt="Corte moderno - Cliente Carlos" width="400" height="250" loading="lazy">
                         <div class="gallery-overlay">
                             <div class="gallery-caption">Corte moderno - Cliente Carlos</div>
                         </div>
@@ -1707,7 +1784,7 @@
                     
                     <!-- Image 4 -->
                     <div class="gallery-item">
-                        <img src="img/gallery/trabajo-4.jpg" alt="Tratamiento de keratina">
+                        <img src="assets/img/gallery/trabajo-4.jpg" alt="Tratamiento de keratina - Cliente Laura" width="400" height="250" loading="lazy">
                         <div class="gallery-overlay">
                             <div class="gallery-caption">Tratamiento de keratina - Cliente Laura</div>
                         </div>
@@ -1715,7 +1792,7 @@
                     
                     <!-- Image 5 -->
                     <div class="gallery-item">
-                        <img src="img/gallery/trabajo-5.jpg" alt="Peinado para quinceañera">
+                        <img src="assets/img/gallery/trabajo-5.jpg" alt="Peinado para quinceañera - Cliente Sofía" width="400" height="250" loading="lazy">
                         <div class="gallery-overlay">
                             <div class="gallery-caption">Peinado para quinceañera - Cliente Sofía</div>
                         </div>
@@ -1723,7 +1800,7 @@
                     
                     <!-- Image 6 -->
                     <div class="gallery-item">
-                        <img src="img/gallery/trabajo-6.jpg" alt="Color fantasía">
+                        <img src="assets/img/gallery/trabajo-6.jpg" alt="Color fantasía - Cliente Daniela" width="400" height="250" loading="lazy">
                         <div class="gallery-overlay">
                             <div class="gallery-caption">Color fantasía - Cliente Daniela</div>
                         </div>
@@ -1757,7 +1834,7 @@
             <div class="testimonials-slider">
                 <!-- Testimonial 1 -->
                 <div class="testimonial-card">
-                    <img src="img/testimonials/cliente-1.jpg" alt="Cliente María" class="testimonial-avatar">
+                    <img src="assets/img/testimonials/cliente-1.jpg" alt="Cliente María" class="testimonial-avatar" width="80" height="80" loading="lazy">
                     <p class="testimonial-text">El mejor salón de Huancayo. Hace años que confío en ellos para mis tintes y nunca me han defraudado. Mi cabello luce espectacular.</p>
                     <h4 class="testimonial-author">María Fernández</h4>
                     <p class="testimonial-role">Cliente frecuente</p>
@@ -1765,7 +1842,7 @@
                 
                 <!-- Testimonial 2 -->
                 <div class="testimonial-card">
-                    <img src="img/testimonials/cliente-2.jpg" alt="Cliente Ana" class="testimonial-avatar">
+                    <img src="assets/img/testimonials/cliente-2.jpg" alt="Cliente Ana" class="testimonial-avatar" width="80" height="80" loading="lazy">
                     <p class="testimonial-text">Para mi boda me hicieron un peinado espectacular que duró toda la noche. Las fotos quedaron increíbles, ¡gracias!</p>
                     <h4 class="testimonial-author">Ana Torres</h4>
                     <p class="testimonial-role">Novia</p>
@@ -1773,7 +1850,7 @@
                 
                 <!-- Testimonial 3 -->
                 <div class="testimonial-card">
-                    <img src="img/testimonials/cliente-3.jpg" alt="Cliente Carlos" class="testimonial-avatar">
+                    <img src="assets/img/testimonials/cliente-3.jpg" alt="Cliente Carlos" class="testimonial-avatar" width="80" height="80" loading="lazy">
                     <p class="testimonial-text">Soy cliente desde hace años. Siempre me dan excelentes recomendaciones para mi cabello y los resultados son perfectos.</p>
                     <h4 class="testimonial-author">Carlos Mendoza</h4>
                     <p class="testimonial-role">Cliente frecuente</p>
@@ -1792,7 +1869,7 @@
                 <!-- Eva Suarez -->
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="img/team/eva-suarez.jpg" alt="Eva Suarez - Fundadora">
+                        <img src="assets/img/team/eva-suarez.jpg" alt="Eva Suarez - Fundadora" width="400" height="350" loading="lazy">
                     </div>
                     <div class="team-member-content">
                         <h3 class="team-member-name">Eva Suarez</h3>
@@ -1807,7 +1884,7 @@
                 <!-- Damaris -->
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="img/team/damaris.jpg" alt="Damaris - Peinados para eventos">
+                        <img src="assets/img/team/damaris.jpg" alt="Damaris - Peinados para eventos" width="400" height="350" loading="lazy">
                     </div>
                     <div class="team-member-content">
                         <h3 class="team-member-name">Damaris</h3>
@@ -1882,7 +1959,16 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form name="contact" netlify>
+                    <form name="contact" method="POST" netlify netlify-honeypot="bot-field">
+                        <p class="hidden">
+                            <label>No llenar esto si eres humano: <input name="bot-field"></label>
+                        </p>
+                        
+                        <div class="form-header">
+                            <h3>Reserva tu cita</h3>
+                            <p>Te responderemos en menos de 1 hora</p>
+                        </div>
+                        
                         <div class="form-group">
                             <label for="name" class="form-label">Nombre Completo</label>
                             <input type="text" id="name" name="name" class="form-control" required>
@@ -1940,13 +2026,13 @@
             <div class="footer-container">
                 <div class="footer-col">
                     <div class="footer-brand">
-                        <img src="img/logo-edemi-rectangular.webp" alt="Edemi Salón Spa" class="footer-logo">
+                        <img src="assets/img/logo/logo-edemi-rectangular.webp" alt="Edemi Salón Spa" class="footer-logo" width="200" height="50" loading="lazy">
                     </div>
                     <p class="footer-about">Más de 15 años ofreciendo servicios profesionales de belleza en Huancayo. Especialistas en tintes, tratamientos capilares y peinados para eventos.</p>
                     <div class="footer-social">
-                        <a href="#" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="footer-social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
@@ -1996,7 +2082,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 Edemi Salón Spa. Todos los derechos reservados.</p>
+                <p>&copy; <span id="current-year"></span> Edemi Salón Spa. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -2012,7 +2098,7 @@
             <span class="promo-text">¡Primera cita con 15% de descuento!</span>
             <a href="https://wa.me/51974161367" class="btn btn-primary btn-small">Aprovechar Oferta</a>
         </div>
-        <button class="promo-close">&times;</button>
+        <button class="promo-close" aria-label="Cerrar promoción">&times;</button>
     </div>
     
     <!-- JavaScript -->
@@ -2050,15 +2136,23 @@
                 
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
                     window.scrollTo({
-                        top: target.offsetTop - 90,
+                        top: targetPosition,
                         behavior: 'smooth'
                     });
                     
                     // Close mobile menu if open
-                    mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.style.overflow = '';
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                        overlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                    
+                    // Update URL without reload
+                    history.pushState(null, null, this.getAttribute('href'));
                 }
             });
         });
@@ -2088,6 +2182,14 @@
                 // Show corresponding content
                 const tabId = btn.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
+                
+                // Track in analytics (optional)
+                if(typeof gtag !== 'undefined') {
+                    gtag('event', 'click', {
+                        'event_category': 'Services',
+                        'event_label': tabId
+                    });
+                }
             });
         });
         
@@ -2095,6 +2197,11 @@
         if (document.querySelector('form[netlify]')) {
             document.querySelector('form[netlify]').addEventListener('submit', function(e) {
                 // You can add form validation here if needed
+                const botField = document.querySelector('[name="bot-field"]').value;
+                if (botField) {
+                    e.preventDefault();
+                    return false;
+                }
             });
         }
         
@@ -2102,6 +2209,20 @@
         document.querySelector('.promo-close').addEventListener('click', function() {
             document.querySelector('.promo-banner').style.display = 'none';
         });
+        
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Pre-rendering for search engine bots
+        if (navigator.userAgent.indexOf('Speed Insights') === -1 && 
+            navigator.userAgent.indexOf('Googlebot') !== -1) {
+            window.prerenderReady = false;
+            
+            // Simulate data loading if necessary
+            setTimeout(function() {
+                window.prerenderReady = true;
+            }, 1000);
+        }
     </script>
 </body>
 </html>
