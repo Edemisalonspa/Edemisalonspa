@@ -10,6 +10,13 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#E75480">
     
+    <!-- Preconexión y precarga de recursos críticos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="assets/img/hero-bg.jpg" as="image">
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://edemisalonspa.com/">
@@ -27,29 +34,62 @@
     <meta property="twitter:description" content="15 años de experiencia en tintes profesionales y peinados para eventos especiales. Agenda tu cita por WhatsApp.">
     <meta property="twitter:image" content="https://edemisalonspa.com/assets/img/logo/logo-edemi-square.webp">
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://edemisalonspa.com" />
-
+    <title>Edemi Salón Spa - Tintes Profesionales y Peinados para Eventos en Huancayo</title>
+    
     <!-- Favicon y Apple Touch Icon -->
     <link rel="icon" type="image/webp" href="assets/img/logo/logo-edemi-square.webp">
     <link rel="apple-touch-icon" href="assets/img/logo/logo-edemi-square.webp">
-    <link rel="manifest" href="/manifest.json">
     
-    <!-- Preconexión y precarga de recursos -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"></noscript>
-    
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "name": "Edemi Salón Spa",
+      "image": "https://edemisalonspa.com/assets/img/logo/logo-edemi-square.webp",
+      "@id": "https://edemisalonspa.com",
+      "url": "https://edemisalonspa.com",
+      "telephone": "+51974161367",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Evitamiento 123",
+        "addressLocality": "Huancayo",
+        "addressRegion": "Junín",
+        "postalCode": "12000",
+        "addressCountry": "PE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-12.067158",
+        "longitude": "-75.209562"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "20:00"
+      },
+      "priceRange": "$$",
+      "sameAs": [
+        "https://www.facebook.com/edemisalonspa",
+        "https://www.instagram.com/edemisalonspa"
+      ]
+    }
+    </script>
 
-    <!-- CSS Crítico -->
+    <!-- Critical CSS -->
     <style>
         :root {
             --primary: #E75480;
             --primary-light: #ff85a9;
-            --primary-dark: #c13a6d; /* Mejor contraste para accesibilidad */
+            --primary-dark: #b3446c;
             --secondary: #FFD1DC;
             --dark: #333333;
             --light: #FFFFFF;
@@ -73,83 +113,7 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 500;
-            text-align: center;
-            transition: var(--transition);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: var(--light);
-        }
-
-        .btn-primary:hover, .btn-primary:focus {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(231, 84, 128, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover, .btn-secondary:focus {
-            background-color: var(--primary);
-            color: var(--light);
-        }
-
-        .btn-whatsapp {
-            background-color: var(--whatsapp);
-            color: var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-whatsapp:hover, .btn-whatsapp:focus {
-            background-color: #128C7E;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-        }
-
-        /* Header Styles */
+        /* Estilos críticos para renderizado inicial */
         header {
             position: fixed;
             top: 0;
@@ -165,35 +129,37 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .branding {
             display: flex;
             align-items: center;
             gap: 15px;
-        }
-
-        .logo img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            transition: var(--transition);
+            flex: 1;
+            min-width: 0;
         }
 
         .brand-text {
             display: flex;
             flex-direction: column;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .brand-name {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--primary-dark);
             line-height: 1.1;
             margin: 0;
             letter-spacing: 0.5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .brand-tagline {
@@ -203,143 +169,24 @@
             color: var(--dark);
             margin: 3px 0 0 0;
             letter-spacing: 0.3px;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            position: relative;
-            padding: 5px 0;
-            transition: var(--transition);
-        }
-
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover:after, .nav-link:focus:after {
-            width: 100%;
-        }
-
-        .nav-link:hover, .nav-link:focus {
-            color: var(--primary);
-        }
-
-        .btn-sm {
-            padding: 8px 20px;
-            font-size: 0.9rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .mobile-menu-btn {
-            display: none;
             background: none;
             border: none;
+            color: var(--primary-dark);
             font-size: 1.5rem;
-            color: var(--dark);
             cursor: pointer;
             padding: 5px;
             margin-left: 15px;
         }
 
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 85%;
-            max-width: 350px;
-            height: 100vh;
-            background-color: var(--primary-dark);
-            z-index: 1100;
-            transition: var(--transition);
-            padding: 30px 25px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--light);
-            cursor: pointer;
-        }
-
-        .mobile-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .mobile-nav-link {
-            color: var(--light);
-            font-size: 1.1rem;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-nav-link:hover, .mobile-nav-link:focus {
-            color: var(--secondary);
-        }
-
-        .mobile-nav .btn-whatsapp {
-            background: var(--whatsapp);
-            color: white;
-            text-align: center;
-            padding: 12px;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1050;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(255, 209, 220, 0.9), rgba(255, 209, 220, 0.9)), url('assets/img/hero-bg.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             height: 100vh;
             min-height: 700px;
             display: flex;
@@ -349,287 +196,24 @@
             position: relative;
         }
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: var(--dark);
-            animation: fadeInUp 1s ease 0.2s forwards;
-            opacity: 0;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            animation: fadeInUp 1s ease 0.4s forwards;
-            opacity: 0;
-        }
-
-        /* Promo Banner */
+        /* Estilos para carga diferida */
+        .mobile-menu,
+        .overlay,
         .promo-banner {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: var(--primary-dark);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
             display: none;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-            z-index: 99;
-            transform: translateX(-150%);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .promo-banner.show {
-            display: flex;
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .promo-content {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .promo-text {
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-
-        .btn-small {
-            padding: 8px 15px;
-            font-size: 0.9rem;
-        }
-
-        .promo-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            line-height: 1;
-            padding: 0 0 5px 5px;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .section {
-                padding: 60px 0;
-            }
-            
-            .about-container, .advice-container {
-                flex-direction: column;
-            }
-            
-            .about-image, .advice-image {
-                width: 100%;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .hero-title {
-                font-size: 2.8rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav-menu {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .services-tabs {
-                gap: 5px;
-            }
-            
-            .tab-btn {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-
-            .header-container {
-                padding: 10px 15px;
-            }
-            
-            .branding {
-                gap: 10px;
-            }
-            
-            .logo img {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .brand-name {
-                font-size: 1.2rem;
-                white-space: nowrap;
-            }
-            
-            .brand-tagline {
-                display: block;
-                font-size: 0.65rem;
-                margin-top: 2px;
-            }
-            
-            .mobile-menu-btn {
-                margin-left: auto;
-            }
-
-            .team-member-image {
-                height: 300px;
-            }
-
-            .footer-logo {
-                height: 40px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .section {
-                padding: 50px 0;
-            }
-            
-            .hero-title {
-                font-size: 2.2rem;
-                padding: 0 15px;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-                padding: 0 10px;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .section-subtitle {
-                font-size: 1rem;
-                padding: 0 15px;
-            }
-
-            .header-container {
-                padding: 8px 10px;
-            }
-            
-            .logo img {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .brand-name {
-                font-size: 1.1rem;
-            }
-            
-            .brand-tagline {
-                font-size: 0.6rem;
-            }
-
-            .promo-banner {
-                flex-direction: row;
-                align-items: center;
-                width: calc(100% - 40px);
-                left: 20px;
-                padding: 12px 15px;
-            }
-            
-            .promo-content {
-                flex: 1;
-                flex-direction: row;
-                gap: 10px;
-                align-items: center;
-            }
-            
-            .promo-text {
-                font-size: 0.95rem;
-            }
-            
-            .promo-close {
-                padding: 0 0 0 10px;
-            }
-            
-            .hero-buttons .btn {
-                width: 100%;
-                max-width: 280px;
-                margin: 0 auto;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        @keyframes priceHighlight {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
         }
     </style>
+
+    <!-- CSS no crítico (se carga después) -->
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </noscript>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="container header-container">
+        <div class="header-container">
             <div class="branding">
                 <a href="/" class="logo" aria-label="Edemi Salón Spa - Inicio">
                     <img src="assets/img/logo/logo-edemi-square.webp" 
@@ -644,28 +228,28 @@
                 </div>
             </div>
             
+            <button class="mobile-menu-btn" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+            
             <nav class="nav-menu">
                 <a href="#home" class="nav-link">Inicio</a>
                 <a href="#about" class="nav-link">Nosotros</a>
                 <a href="#services" class="nav-link">Servicios</a>
                 <a href="#gallery" class="nav-link">Galería</a>
                 <a href="#team" class="nav-link">Equipo</a>
-                <a href="#contact" class="btn btn-primary btn-sm">Contacto</a>
+                <a href="https://wa.me/51974161367" class="btn btn-primary btn-sm">Contacto</a>
             </nav>
-            
-            <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-                <i class="fas fa-bars"></i>
-                <span class="sr-only">Menú</span>
-            </button>
         </div>
     </header>
     
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-        <button class="mobile-menu-close" aria-label="Cerrar menú">
-            <i class="fas fa-times"></i>
-            <span class="sr-only">Cerrar menú</span>
-        </button>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="mobile-menu-close" aria-label="Cerrar menú">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
         
         <nav class="mobile-nav">
             <a href="#home" class="mobile-nav-link">Inicio</a>
@@ -1200,18 +784,18 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form name="contact" method="POST" netlify data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+                    <form name="contact" method="POST" netlify data-netlify="true" id="contact-form" netlify-honeypot="bot-field">
                         <input type="hidden" name="form-name" value="contact">
                         <p class="hidden">
                             <label>No llenar: <input name="bot-field"></label>
                         </p>
                         
+                        <div id="form-messages" class="hidden"></div>
+                        
                         <div class="form-header">
                             <h3>Reserva tu cita</h3>
                             <p>Te responderemos en menos de 1 hora</p>
                         </div>
-                        
-                        <div id="form-messages"></div>
                         
                         <div class="form-group">
                             <label for="name" class="form-label">Nombre Completo</label>
@@ -1225,7 +809,7 @@
                         
                         <div class="form-group">
                             <label for="phone" class="form-label">Teléfono</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                            <input type="tel" id="phone" name="phone" class="form-control" pattern="[0-9]{9}" required>
                         </div>
                         
                         <div class="form-group">
@@ -1345,36 +929,1217 @@
         <button class="promo-close" aria-label="Cerrar promoción">&times;</button>
     </div>
     
+    <!-- CSS no crítico (carga diferida) -->
+    <style id="deferred-styles">
+        /* Estilos generales */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 84, 128, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary-dark);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: var(--dark);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Nav Menu Desktop */
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: var(--primary-dark);
+            z-index: 1100;
+            transition: var(--transition);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--light);
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-nav-link {
+            color: var(--light);
+            font-size: 1.1rem;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--secondary);
+            padding-left: 10px;
+        }
+
+        .mobile-nav .btn-whatsapp {
+            background: var(--whatsapp);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 30px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+
+        .mobile-nav .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero Section */
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--dark);
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--gray);
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            text-align: left;
+        }
+
+        .about-text {
+            margin-bottom: 20px;
+        }
+
+        .about-features {
+            margin-top: 30px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .about-feature-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-top: 3px;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light);
+        }
+
+        .services-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            background: none;
+            border: 2px solid var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(231, 84, 128, 0.1);
+        }
+
+        .service-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        .service-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .service-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+            flex-wrap: wrap;
+        }
+
+        .service-meta i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+
+        .service-description {
+            margin-bottom: 20px;
+        }
+
+        .service-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .service-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.3rem;
+            animation: priceHighlight 3s infinite;
+        }
+
+        .service-cta {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(231, 84, 128, 0.1), rgba(255, 209, 220, 0.2));
+            border-radius: 15px;
+        }
+
+        .service-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .service-cta p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+
+        /* Style Advice Section */
+        .style-advice {
+            background: var(--gray);
+        }
+
+        .advice-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .advice-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .advice-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .advice-content {
+            flex: 1;
+        }
+
+        .advice-item {
+            margin-bottom: 30px;
+        }
+
+        .advice-item h3 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .advice-item h3 i {
+            color: var(--primary);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--gray);
+        }
+
+        .gallery-container {
+            margin-top: 50px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            color: var(--light);
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light);
+        }
+
+        .testimonials-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 150px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .testimonials-slider {
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 0 15px;
+            text-align: center;
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-text:before,
+        .testimonial-text:after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-role {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        /* Team Section */
+        .team {
+            background-color: var(--gray);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-member-image {
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .team-member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .team-member:hover .team-member-image img {
+            transform: scale(1.05);
+        }
+
+        .team-member-content {
+            padding: 25px 20px;
+        }
+
+        .team-member-name {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+        }
+
+        .team-member-role {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .team-member-bio {
+            margin: 15px 0;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .team-member-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .team-member-social a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--primary-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: white;
+        }
+
+        .team-member-social a:hover {
+            background: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-info-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-top: 3px;
+        }
+
+        .contact-form {
+            background-color: var(--gray);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray-dark);
+            border-radius: 5px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(231, 84, 128, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .form-check input {
+            width: auto;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 15px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .btn-block i {
+            margin-right: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--light);
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        .footer-about {
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social-link {
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .footer-social-link:hover {
+            color: var(--secondary);
+        }
+
+        .footer-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-link {
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact-icon {
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            background-color: var(--whatsapp);
+            color: var(--light);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        /* Promo Banner */
+        .promo-banner {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--primary-dark);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            display: none;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            z-index: 99;
+            transition: all 0.3s ease;
+        }
+
+        .promo-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .promo-text {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+
+        .promo-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 0 5px 5px;
+            transition: var(--transition);
+        }
+
+        .promo-close:hover {
+            color: var(--secondary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        @keyframes priceHighlight {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .about-container, .advice-container {
+                flex-direction: column;
+            }
+            
+            .about-image, .advice-image {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .services-tabs {
+                gap: 5px;
+            }
+            
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+
+            .team-member-image {
+                height: 300px;
+            }
+
+            .footer-logo {
+                height: 40px;
+            }
+
+            .promo-banner {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                left: 20px;
+                right: 20px;
+                width: auto;
+                bottom: 90px;
+            }
+
+            .promo-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 50px 0;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .promo-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* Form messages */
+        .hidden {
+            display: none;
+        }
+
+        .form-error {
+            color: #E75480;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .form-success {
+            background: #25D366;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+
     <!-- JavaScript -->
     <script>
+        // Cargar CSS no crítico después de que la página se haya cargado
+        var loadDeferredStyles = function() {
+            var addStylesNode = document.getElementById("deferred-styles");
+            var replacement = document.createElement("div");
+            replacement.innerHTML = addStylesNode.textContent;
+            document.body.appendChild(replacement);
+            addStylesNode.parentElement.removeChild(addStylesNode);
+        };
+        
+        var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+            window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+        
+        if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+        else window.addEventListener('load', loadDeferredStyles);
+
         // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const mobileMenuClose = document.querySelector('.mobile-menu-close');
         const mobileMenu = document.querySelector('.mobile-menu');
         const overlay = document.querySelector('.overlay');
-        
+
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.add('active');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-            mobileMenuBtn.setAttribute('aria-expanded', 'true');
-            mobileMenu.setAttribute('aria-hidden', 'false');
         });
         
         mobileMenuClose.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
-            mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            mobileMenu.setAttribute('aria-hidden', 'true');
         });
         
         overlay.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
-            mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            mobileMenu.setAttribute('aria-hidden', 'true');
         });
         
         // Smooth Scrolling for Anchor Links
@@ -1399,12 +2164,7 @@
                         mobileMenu.classList.remove('active');
                         overlay.classList.remove('active');
                         document.body.style.overflow = '';
-                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                        mobileMenu.setAttribute('aria-hidden', 'true');
                     }
-                    
-                    // Update URL without reload
-                    history.pushState(null, null, this.getAttribute('href'));
                 }
             });
         });
@@ -1434,154 +2194,103 @@
                 // Show corresponding content
                 const tabId = btn.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
-                
-                // Track in analytics (optional)
-                if(typeof gtag !== 'undefined') {
-                    gtag('event', 'click', {
-                        'event_category': 'Services',
-                        'event_label': tabId
-                    });
-                }
             });
         });
         
-        // Form Submission
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const formMessages = document.getElementById('form-messages');
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                
-                // Show loading state
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-                submitBtn.disabled = true;
-                
-                // Simulate form submission (Netlify will handle the actual submission)
-                setTimeout(() => {
-                    formMessages.innerHTML = '<div class="success-message">¡Gracias! Tu mensaje ha sido enviado. Te contactaremos pronto.</div>';
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                    contactForm.reset();
-                    
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        formMessages.innerHTML = '';
-                    }, 5000);
-                }, 1500);
-            });
-        }
+        // Promo Banner Functionality
+        const promoBanner = document.querySelector('.promo-banner');
+        const promoClose = document.querySelector('.promo-close');
         
-        // Promo Banner
-        document.addEventListener('DOMContentLoaded', function() {
-            const promoBanner = document.querySelector('.promo-banner');
-            const promoClose = document.querySelector('.promo-close');
-            
-            // Mostrar solo si no se ha cerrado antes
+        if(promoBanner && promoClose) {
+            // Show banner only if not previously closed
             if(localStorage.getItem('promoClosed') !== 'true') {
+                promoBanner.style.display = 'flex';
                 setTimeout(() => {
-                    promoBanner.classList.add('show');
-                }, 2000);
+                    promoBanner.style.opacity = '1';
+                }, 10);
             }
             
-            // Cerrar banner
             promoClose.addEventListener('click', function() {
-                promoBanner.style.transform = 'translateX(-150%)';
                 promoBanner.style.opacity = '0';
-                
-                // Eliminar completamente el banner después de la animación
                 setTimeout(() => {
                     promoBanner.style.display = 'none';
-                }, 500);
-                
-                // Guardar en localStorage que se cerró
-                localStorage.setItem('promoClosed', 'true');
+                    localStorage.setItem('promoClosed', 'true');
+                }, 300);
             });
-        });
-        
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // Service Worker Registration for PWA
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(registration => {
-                    console.log('ServiceWorker registration successful');
-                }, err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
+            
+            // Adjust for mobile
+            function adjustPromoBanner() {
+                if(window.innerWidth <= 768) {
+                    promoBanner.style.flexDirection = 'column';
+                    promoBanner.style.textAlign = 'center';
+                    promoBanner.style.bottom = '90px';
+                    promoBanner.style.left = '20px';
+                    promoBanner.style.right = '20px';
+                    promoBanner.style.width = 'auto';
+                } else {
+                    promoBanner.style.flexDirection = 'row';
+                    promoBanner.style.textAlign = 'left';
+                    promoBanner.style.bottom = '30px';
+                    promoBanner.style.left = '30px';
+                    promoBanner.style.right = 'auto';
+                    promoBanner.style.width = 'auto';
+                }
+            }
+            
+            // Initial adjustment
+            adjustPromoBanner();
+            
+            // Adjust on resize
+            window.addEventListener('resize', adjustPromoBanner);
+        }
+
+        // Form Handling
+        const contactForm = document.getElementById('contact-form');
+        if(contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const form = e.target;
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                const messages = document.getElementById('form-messages');
+                
+                // Validación adicional
+                if(!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+                
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                
+                try {
+                    const response = await fetch('/', {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    
+                    if(response.ok) {
+                        window.location.href = '/gracias.html';
+                    } else {
+                        throw new Error('Error en el servidor');
+                    }
+                } catch (error) {
+                    messages.innerHTML = `
+                        <div class="form-error">
+                            Ocurrió un error. Por favor intenta nuevamente o contáctanos por WhatsApp.
+                        </div>
+                    `;
+                    messages.classList.remove('hidden');
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
             });
         }
-    </script>
-    
-    <!-- Schema.org markup for Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BeautySalon",
-      "name": "Edemi Salón Spa",
-      "image": "https://edemisalonspa.com/assets/img/logo/logo-edemi-square.webp",
-      "@id": "https://edemisalonspa.com",
-      "url": "https://edemisalonspa.com",
-      "telephone": "+51974161367",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Av. Evitamiento 123",
-        "addressLocality": "Huancayo",
-        "addressRegion": "Junín",
-        "postalCode": "12000",
-        "addressCountry": "PE"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "-12.067158",
-        "longitude": "-75.209562"
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
-        "opens": "09:00",
-        "closes": "20:00"
-      },
-      "priceRange": "$$",
-      "sameAs": [
-        "https://www.facebook.com/edemisalonspa",
-        "https://www.instagram.com/edemisalonspa"
-      ]
-    }
-    </script>
-    
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Inicio",
-        "item": "https://edemisalonspa.com"
-      },{
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Servicios",
-        "item": "https://edemisalonspa.com#services"
-      },{
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Contacto",
-        "item": "https://edemisalonspa.com#contact"
-      }]
-    }
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
