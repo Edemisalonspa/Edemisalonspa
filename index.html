@@ -1959,65 +1959,63 @@
                 </div>
                 
                 <div class="contact-form">
-    <form name="contact" method="POST" netlify data-netlify="true" netlify-honeypot="bot-field">
-    <!-- Campos requeridos por Netlify -->
-    <input type="hidden" name="form-name" value="contact">
-    <p style="display: none;">
-        <label>No llenar: <input name="bot-field"></label>
-    </p>
-    
-    <div class="form-header">
-        <h3>Reserva tu cita</h3>
-        <p>Te responderemos en menos de 1 hora</p>
-    </div>
-    
-    <div class="form-group">
-        <label for="name" class="form-label">Nombre Completo</label>
-        <input type="text" id="name" name="name" class="form-control" required>
-    </div>
-    
-    <div class="form-group">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" id="email" name="email" class="form-control" required>
-    </div>
-    
-    <div class="form-group">
-        <label for="phone" class="form-label">Teléfono</label>
-        <input type="tel" id="phone" name="phone" class="form-control" required>
-    </div>
-    
-    <div class="form-group">
-        <label for="service" class="form-label">Servicio de Interés</label>
-        <select id="service" name="service" class="form-control" required>
-            <option value="" disabled selected>Seleccione un servicio</option>
-            <option value="Tinte profesional">Tinte profesional</option>
-            <option value="Tratamientos capilares">Tratamientos capilares</option>
-            <option value="Peinados para eventos">Peinados para eventos</option>
-            <option value="Cortes de cabello">Cortes de cabello</option>
-            <option value="Maquillaje profesional">Maquillaje profesional</option>
-            <option value="Otro">Otro</option>
-        </select>
-    </div>
-    
-    <div class="form-group">
-        <label for="message" class="form-label">Mensaje</label>
-        <textarea id="message" name="message" class="form-control"></textarea>
-    </div>
-    
-    <div class="form-check">
-        <input type="checkbox" id="promo" name="promo" checked>
-        <label for="promo">Deseo recibir promociones especiales</label>
-    </div>
-    
-    <button type="submit" class="btn btn-primary btn-block">
-        <i class="fas fa-calendar-check"></i> Reservar Cita
-    </button>
-    
-    <div class="form-footer">
-        <p><small>Confirmaremos tu cita por WhatsApp en menos de 1 hora</small></p>
-    </div>
-</form>
-</div>
+                    <form name="contact" method="POST" netlify netlify-honeypot="bot-field">
+                        <p class="hidden">
+                            <label>No llenar esto si eres humano: <input name="bot-field"></label>
+                        </p>
+                        
+                        <div class="form-header">
+                            <h3>Reserva tu cita</h3>
+                            <p>Te responderemos en menos de 1 hora</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nombre Completo</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service" class="form-label">Servicio de Interés</label>
+                            <select id="service" name="service" class="form-control" required>
+                                <option value="" disabled selected>Seleccione un servicio</option>
+                                <option value="Tinte profesional">Tinte profesional</option>
+                                <option value="Tratamientos capilares">Tratamientos capilares</option>
+                                <option value="Peinados para eventos">Peinados para eventos</option>
+                                <option value="Cortes de cabello">Cortes de cabello</option>
+                                <option value="Maquillaje profesional">Maquillaje profesional</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Mensaje</label>
+                            <textarea id="message" name="message" class="form-control"></textarea>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input type="checkbox" id="promo" name="promo" checked>
+                            <label for="promo">Deseo recibir promociones especiales</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-calendar-check"></i> Reservar Cita
+                        </button>
+                        
+                        <div class="form-footer">
+                            <p><small>Confirmaremos tu cita por WhatsApp en menos de 1 hora</small></p>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -2225,40 +2223,6 @@
                 window.prerenderReady = true;
             }, 1000);
         }
-
-        <!-- Script para el formulario Netlify -->
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.querySelector('form[netlify]');
-            if(form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    // Muestra un loader si tienes uno
-                    const submitBtn = form.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.innerHTML;
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-                    
-                    fetch('/', {
-                        method: 'POST',
-                        body: new FormData(form),
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    })
-                    .then(() => {
-                        window.location.href = '/gracias.html';
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        submitBtn.innerHTML = originalText;
-                        alert('Ocurrió un error. Por favor intenta nuevamente.');
-                    });
-                });
-            }
-        });
-        </script>
     </script>
-</body>
-</html>
 </body>
 </html>
