@@ -773,9 +773,6 @@
             gap: 30px;
             margin: 40px 0;
             flex-wrap: wrap;
-            overflow-x: auto;
-            padding-bottom: 20px;
-            scroll-snap-type: x mandatory;
         }
 
         .stat-card {
@@ -785,8 +782,6 @@
             text-align: center;
             min-width: 150px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            scroll-snap-align: start;
-            flex-shrink: 0;
         }
 
         .stat-number {
@@ -802,44 +797,43 @@
             color: #666;
         }
 
-        /* Carrusel de testimonios - Estilos corregidos */
-        .testimonials-slider {
+        /* Nuevos estilos para los carruseles */
+        .carousel-container {
             position: relative;
-            max-width: 800px;
-            margin: 50px auto;
+            max-width: 1000px;
+            margin: 40px auto;
             overflow: hidden;
         }
 
-        .testimonials-container {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .testimonials-track {
+        .carousel-track {
             display: flex;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            list-style: none;
+            transition: transform 0.5s ease;
         }
 
-        .testimonial-card {
-            flex: 0 0 calc(100% - 30px);
-            margin: 0 15px;
+        .carousel-slide {
+            min-width: 100%;
             box-sizing: border-box;
-            min-width: 0;
-            padding: 30px;
+            padding: 0 15px;
+        }
+
+        .testimonial-slide {
             background-color: var(--light);
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             text-align: center;
         }
 
+        .team-slide {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
         .testimonial-avatar {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
             margin: 0 auto 20px;
@@ -850,6 +844,8 @@
             font-style: italic;
             margin-bottom: 20px;
             position: relative;
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         .testimonial-text:before,
@@ -863,105 +859,13 @@
         .testimonial-author {
             font-weight: 600;
             margin-bottom: 5px;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
         }
 
         .testimonial-role {
             color: var(--primary);
             font-size: 0.9rem;
-        }
-
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(231, 84, 128, 0.7);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-control.prev {
-            left: 15px;
-        }
-
-        .carousel-control.next {
-            right: 15px;
-        }
-
-        .carousel-control:hover {
-            background: var(--primary);
-        }
-
-        .testimonial-nav {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .testimonial-dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background: #ccc;
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .testimonial-dot.active {
-            background: var(--primary);
-        }
-
-        /* Team Section - Carrusel con estilos corregidos */
-        .team {
-            background-color: var(--gray);
-        }
-
-        .team-slider {
-            position: relative;
-            max-width: 600px;
-            margin: 50px auto;
-            overflow: hidden;
-        }
-
-        .team-container {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .team-track {
-            display: flex;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .team-member {
-            flex: 0 0 calc(100% - 30px);
-            margin: 0 15px;
-            box-sizing: border-box;
-            min-width: 0;
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .team-member:hover {
-            transform: translateY(-10px);
         }
 
         .team-member-image {
@@ -976,16 +880,13 @@
             transition: var(--transition);
         }
 
-        .team-member:hover .team-member-image img {
-            transform: scale(1.05);
-        }
-
         .team-member-content {
-            padding: 25px 20px;
+            padding: 25px;
+            text-align: center;
         }
 
         .team-member-name {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 5px;
             color: var(--primary-dark);
         }
@@ -994,41 +895,55 @@
             color: var(--primary);
             margin-bottom: 15px;
             font-weight: 500;
+            font-size: 1.1rem;
         }
 
         .team-member-bio {
-            margin: 15px 0;
-            font-size: 0.95rem;
+            margin: 20px 0;
+            font-size: 1rem;
             color: #555;
+            line-height: 1.6;
         }
 
-        .team-member-social {
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(231, 84, 128, 0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
+        }
+
+        .carousel-dots {
             display: flex;
             justify-content: center;
-            gap: 15px;
-        }
-
-        .team-member-social a {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: var(--primary-light);
-            padding: 8px 15px;
-            border-radius: 20px;
-            color: white;
-        }
-
-        .team-member-social a:hover {
-            background: var(--primary);
-        }
-
-        .team-nav {
-            text-align: center;
             margin-top: 20px;
         }
 
-        .team-dot {
-            display: inline-block;
+        .carousel-dot {
             width: 12px;
             height: 12px;
             background: #ccc;
@@ -1038,8 +953,31 @@
             transition: background 0.3s ease;
         }
 
-        .team-dot.active {
+        .carousel-dot.active {
             background: var(--primary);
+        }
+
+        .team-consult-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .team-consult-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(231, 84, 128, 0.3);
+        }
+
+        .team-consult-btn i {
+            margin-right: 8px;
         }
 
         /* Contact Section */
@@ -1424,16 +1362,18 @@
             }
 
             /* Ajustes para carruseles en móviles */
-            .testimonial-card,
-            .team-member {
-                flex: 0 0 calc(100% - 20px);
-                margin: 0 10px;
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
-
-            .testimonials-slider,
-            .team-slider {
-                max-width: 100%;
-                padding: 0 10px;
+            
+            .testimonial-slide {
+                padding: 20px;
+            }
+            
+            .team-member-image {
+                height: 300px;
             }
         }
 
@@ -1500,17 +1440,18 @@
             }
 
             /* Ajustes finales para carruseles */
-            .testimonial-card,
-            .team-member {
-                flex: 0 0 calc(100% - 10px);
-                margin: 0 5px;
-                padding: 20px 15px;
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
             }
-
-            .carousel-control {
-                width: 30px;
-                height: 30px;
-                font-size: 0.8rem;
+            
+            .testimonial-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .team-member-image {
+                height: 250px;
             }
         }
     </style>
@@ -2029,55 +1970,63 @@
                 </div>
             </div>
             
-            <div class="testimonials-slider">
-                <div class="testimonials-container">
-                    <div class="testimonials-track">
-                        <!-- Testimonial 1 -->
-                        <div class="testimonial-card">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Testimonio 1 - María -->
+                    <div class="carousel-slide">
+                        <div class="testimonial-slide">
                             <picture>
                                 <source srcset="assets/img/testimonials/cliente-1.webp" type="image/webp">
                                 <source srcset="assets/img/testimonials/cliente-1.jpg" type="image/jpeg"> 
-                                <img src="assets/img/testimonials/cliente-1.jpg" alt="Cliente María" class="testimonial-avatar" width="80" height="80" loading="lazy">
+                                <img src="assets/img/testimonials/cliente-1.jpg" alt="Cliente María" class="testimonial-avatar" width="100" height="100" loading="lazy">
                             </picture>
                             <p class="testimonial-text">El mejor salón de Huancayo. Hace años que confío en ellos para mis tintes y nunca me han defraudado. Mi cabello luce espectacular.</p>
                             <h4 class="testimonial-author">María Fernández</h4>
                             <p class="testimonial-role">Cliente frecuente</p>
                         </div>
-                        
-                        <!-- Testimonial 2 -->
-                        <div class="testimonial-card">
+                    </div>
+                    
+                    <!-- Testimonio 2 - Ana -->
+                    <div class="carousel-slide">
+                        <div class="testimonial-slide">
                             <picture>
                                 <source srcset="assets/img/testimonials/cliente-2.webp" type="image/webp">
                                 <source srcset="assets/img/testimonials/cliente-2.jpg" type="image/jpeg"> 
-                                <img src="assets/img/testimonials/cliente-2.jpg" alt="Cliente Ana" class="testimonial-avatar" width="80" height="80" loading="lazy">
+                                <img src="assets/img/testimonials/cliente-2.jpg" alt="Cliente Ana" class="testimonial-avatar" width="100" height="100" loading="lazy">
                             </picture>
                             <p class="testimonial-text">Para mi boda me hicieron un peinado espectacular que duró toda la noche. Las fotos quedaron increíbles, ¡gracias!</p>
                             <h4 class="testimonial-author">Ana Torres</h4>
                             <p class="testimonial-role">Novia</p>
                         </div>
-                        
-                        <!-- Testimonial 3 -->
-                        <div class="testimonial-card">
+                    </div>
+                    
+                    <!-- Testimonio 3 - Pari -->
+                    <div class="carousel-slide">
+                        <div class="testimonial-slide">
                             <picture>
                                 <source srcset="assets/img/testimonials/cliente-3.webp" type="image/webp">
                                 <source srcset="assets/img/testimonials/cliente-3.jpg" type="image/jpeg"> 
-                                <img src="assets/img/testimonials/cliente-3.jpg" alt="Cliente Carlos" class="testimonial-avatar" width="80" height="80" loading="lazy">
+                                <img src="assets/img/testimonials/cliente-3.jpg" alt="Cliente Pari" class="testimonial-avatar" width="100" height="100" loading="lazy">
                             </picture>
                             <p class="testimonial-text">Soy cliente desde hace años. Siempre me dan excelentes recomendaciones para mi cabello y los resultados son perfectos.</p>
-                            <h4 class="testimonial-author">Carlos Mendoza</h4>
+                            <h4 class="testimonial-author">Pari</h4>
                             <p class="testimonial-role">Cliente frecuente</p>
                         </div>
                     </div>
                 </div>
                 
-                <button class="carousel-control prev" aria-label="Anterior testimonio">
+                <button class="carousel-btn prev" aria-label="Anterior testimonio">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="carousel-control next" aria-label="Siguiente testimonio">
+                <button class="carousel-btn next" aria-label="Siguiente testimonio">
                     <i class="fas fa-chevron-right"></i>
                 </button>
                 
-                <div class="testimonial-nav"></div>
+                <div class="carousel-dots">
+                    <span class="carousel-dot active" data-index="0"></span>
+                    <span class="carousel-dot" data-index="1"></span>
+                    <span class="carousel-dot" data-index="2"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -2088,11 +2037,11 @@
             <h2 class="section-title">Nuestras Expertas</h2>
             <p class="section-subtitle">Profesionales certificadas en coloración y peinados para eventos</p>
             
-            <div class="team-slider">
-                <div class="team-container">
-                    <div class="team-track">
-                        <!-- Eva Suarez -->
-                        <div class="team-member">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Eva Suarez -->
+                    <div class="carousel-slide">
+                        <div class="team-slide">
                             <div class="team-member-image">
                                 <picture>
                                     <source srcset="assets/img/team/eva-suarez.webp" type="image/webp">
@@ -2104,14 +2053,16 @@
                                 <h3 class="team-member-name">Eva Suarez</h3>
                                 <p class="team-member-role">Fundadora & Especialista en Color</p>
                                 <p class="team-member-bio">15 años de experiencia en tintes y transformaciones capilares. Certificada en las marcas más prestigiosas.</p>
-                                <div class="team-member-social">
-                                    <a href="https://wa.me/51974161367"><i class="fab fa-whatsapp"></i> Consultar</a>
-                                </div>
+                                <a href="https://wa.me/51974161367" class="team-consult-btn">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
                             </div>
                         </div>
-                        
-                        <!-- Damaris -->
-                        <div class="team-member">
+                    </div>
+                    
+                    <!-- Damaris -->
+                    <div class="carousel-slide">
+                        <div class="team-slide">
                             <div class="team-member-image">
                                 <picture>
                                     <source srcset="assets/img/team/damaris.webp" type="image/webp">
@@ -2123,22 +2074,25 @@
                                 <h3 class="team-member-name">Damaris</h3>
                                 <p class="team-member-role">Especialista en Peinados para Eventos</p>
                                 <p class="team-member-bio">Experta en crear peinados duraderos y elegantes para bodas, quinceañeras y graduaciones.</p>
-                                <div class="team-member-social">
-                                    <a href="https://wa.me/51974161367"><i class="fab fa-whatsapp"></i> Consultar</a>
-                                </div>
+                                <a href="https://wa.me/51974161367" class="team-consult-btn">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <button class="carousel-control prev" aria-label="Anterior experta">
+                <button class="carousel-btn prev" aria-label="Anterior experta">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="carousel-control next" aria-label="Siguiente experta">
+                <button class="carousel-btn next" aria-label="Siguiente experta">
                     <i class="fas fa-chevron-right"></i>
                 </button>
                 
-                <div class="team-nav"></div>
+                <div class="carousel-dots">
+                    <span class="carousel-dot active" data-index="0"></span>
+                    <span class="carousel-dot" data-index="1"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -2437,288 +2391,349 @@
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // Carrusel de testimonios - Versión mejorada
+        // Carrusel de testimonios
         class TestimonialsCarousel {
-            constructor() {
-                this.slider = document.querySelector('.testimonials-slider');
-                this.track = document.querySelector('.testimonials-track');
-                this.cards = Array.from(document.querySelectorAll('.testimonial-card'));
-                this.dotsContainer = document.querySelector('.testimonial-nav');
-                this.prevBtn = this.slider.querySelector('.prev');
-                this.nextBtn = this.slider.querySelector('.next');
+            constructor(container) {
+                this.container = container;
+                this.track = container.querySelector('.carousel-track');
+                this.slides = Array.from(container.querySelectorAll('.carousel-slide'));
+                this.dots = Array.from(container.querySelectorAll('.carousel-dot'));
+                this.prevBtn = container.querySelector('.prev');
+                this.nextBtn = container.querySelector('.next');
                 this.currentIndex = 0;
-                this.interval = null;
+                this.autoPlayInterval = null;
                 this.autoPlayDelay = 5000;
-                this.touchStartX = 0;
-                this.touchEndX = 0;
+                this.isDragging = false;
+                this.startPos = 0;
+                this.currentTranslate = 0;
+                this.prevTranslate = 0;
                 
-                if (this.cards.length > 1) {
-                    this.init();
-                }
+                this.init();
             }
             
             init() {
-                this.setupTrack();
-                this.createDots();
-                this.setupControls();
-                this.startAutoPlay();
+                this.setSlideWidth();
                 this.setupEventListeners();
-            }
-            
-            setupTrack() {
-                const cardWidthPercentage = 100 / this.cards.length;
-                const marginCompensation = (15 * 2 * this.cards.length) / this.slider.offsetWidth * 100;
-                
-                this.track.style.width = `calc(${100 * this.cards.length}% + ${marginCompensation}%)`;
-                
-                this.cards.forEach(card => {
-                    card.style.flex = `0 0 calc(${cardWidthPercentage}% - 30px)`;
-                    card.style.width = `calc(${cardWidthPercentage}% - 30px)`;
-                });
-                
-                this.updateTrackPosition();
-            }
-            
-            createDots() {
-                this.dotsContainer.innerHTML = '';
-                this.cards.forEach((_, index) => {
-                    const dot = document.createElement('span');
-                    dot.className = 'testimonial-dot';
-                    if (index === 0) dot.classList.add('active');
-                    dot.dataset.index = index;
-                    dot.addEventListener('click', () => this.goToSlide(index));
-                    this.dotsContainer.appendChild(dot);
-                });
-            }
-            
-            setupControls() {
-                if (this.prevBtn && this.nextBtn) {
-                    this.prevBtn.addEventListener('click', () => this.prevSlide());
-                    this.nextBtn.addEventListener('click', () => this.nextSlide());
-                }
-            }
-            
-            updateTrackPosition() {
-                const translateValue = `calc(-${this.currentIndex * 100}% - ${this.currentIndex * 15 * 2}px)`;
-                this.track.style.transform = `translateX(${translateValue})`;
-            }
-            
-            goToSlide(index) {
-                this.currentIndex = (index + this.cards.length) % this.cards.length;
-                this.updateTrackPosition();
-                this.updateDots();
-                this.resetAutoPlay();
-            }
-            
-            updateDots() {
-                const dots = this.dotsContainer.querySelectorAll('.testimonial-dot');
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === this.currentIndex);
-                });
-            }
-            
-            nextSlide() {
-                this.goToSlide(this.currentIndex + 1);
-            }
-            
-            prevSlide() {
-                this.goToSlide(this.currentIndex - 1);
-            }
-            
-            startAutoPlay() {
-                this.interval = setInterval(() => {
-                    this.nextSlide();
-                }, this.autoPlayDelay);
-            }
-            
-            resetAutoPlay() {
-                clearInterval(this.interval);
                 this.startAutoPlay();
+                this.goToSlide(0);
             }
             
-            handleTouchStart(e) {
-                this.touchStartX = e.changedTouches[0].screenX;
-            }
-            
-            handleTouchEnd(e) {
-                this.touchEndX = e.changedTouches[0].screenX;
-                this.handleSwipe();
-            }
-            
-            handleSwipe() {
-                const difference = this.touchStartX - this.touchEndX;
-                if (difference > 50) {
-                    this.nextSlide();
-                } else if (difference < -50) {
-                    this.prevSlide();
-                }
+            setSlideWidth() {
+                const slideWidth = this.container.offsetWidth;
+                this.slides.forEach(slide => {
+                    slide.style.minWidth = `${slideWidth}px`;
+                });
             }
             
             setupEventListeners() {
-                this.slider.addEventListener('mouseenter', () => {
-                    clearInterval(this.interval);
+                // Botones de navegación
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                
+                // Dots de navegación
+                this.dots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        const index = parseInt(dot.getAttribute('data-index'));
+                        this.goToSlide(index);
+                    });
                 });
                 
-                this.slider.addEventListener('mouseleave', () => {
-                    this.startAutoPlay();
+                // Eventos de touch para dispositivos móviles
+                this.track.addEventListener('touchstart', this.touchStart.bind(this));
+                this.track.addEventListener('touchmove', this.touchMove.bind(this));
+                this.track.addEventListener('touchend', this.touchEnd.bind(this));
+                
+                // Eventos de mouse para desktop
+                this.track.addEventListener('mousedown', this.touchStart.bind(this));
+                this.track.addEventListener('mousemove', this.touchMove.bind(this));
+                this.track.addEventListener('mouseup', this.touchEnd.bind(this));
+                this.track.addEventListener('mouseleave', this.touchEnd.bind(this));
+                
+                // Redimensionar ventana
+                window.addEventListener('resize', () => {
+                    this.setSlideWidth();
+                    this.goToSlide(this.currentIndex);
                 });
                 
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') {
-                        this.prevSlide();
-                    } else if (e.key === 'ArrowRight') {
-                        this.nextSlide();
+                // Pausar autoplay al interactuar
+                this.container.addEventListener('mouseenter', () => {
+                    if (this.autoPlayInterval) {
+                        this.pauseAutoPlay();
                     }
                 });
                 
-                this.track.addEventListener('touchstart', (e) => this.handleTouchStart(e), {passive: true});
-                this.track.addEventListener('touchend', (e) => this.handleTouchEnd(e), {passive: true});
+                this.container.addEventListener('mouseleave', () => {
+                    if (this.autoPlayInterval) {
+                        this.startAutoPlay();
+                    }
+                });
+            }
+            
+            touchStart(e) {
+                if (e.type === 'mousedown') {
+                    e.preventDefault();
+                    this.isDragging = true;
+                    this.startPos = e.clientX;
+                } else {
+                    this.startPos = e.touches[0].clientX;
+                }
+                
+                this.prevTranslate = this.currentTranslate;
+                this.track.style.transition = 'none';
+                
+                // Pausar autoplay durante el arrastre
+                if (this.autoPlayInterval) {
+                    this.pauseAutoPlay();
+                }
+            }
+            
+            touchMove(e) {
+                if (e.type === 'mousemove' && !this.isDragging) return;
+                
+                const currentPosition = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+                const diff = currentPosition - this.startPos;
+                this.currentTranslate = this.prevTranslate + diff;
+                this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+            }
+            
+            touchEnd() {
+                this.isDragging = false;
+                this.track.style.transition = 'transform 0.5s ease';
+                
+                const movedBy = this.currentTranslate - this.prevTranslate;
+                
+                if (movedBy < -50 && this.currentIndex < this.slides.length - 1) {
+                    this.nextSlide();
+                } else if (movedBy > 50 && this.currentIndex > 0) {
+                    this.prevSlide();
+                } else {
+                    this.goToSlide(this.currentIndex);
+                }
+                
+                // Reanudar autoplay
+                if (this.autoPlayInterval) {
+                    this.startAutoPlay();
+                }
+            }
+            
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.currentTranslate = -this.slides[this.currentIndex].offsetLeft;
+                this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+                
+                // Actualizar dots
+                this.updateDots();
+            }
+            
+            nextSlide() {
+                if (this.currentIndex === this.slides.length - 1) {
+                    this.goToSlide(0);
+                } else {
+                    this.goToSlide(this.currentIndex + 1);
+                }
+            }
+            
+            prevSlide() {
+                if (this.currentIndex === 0) {
+                    this.goToSlide(this.slides.length - 1);
+                } else {
+                    this.goToSlide(this.currentIndex - 1);
+                }
+            }
+            
+            updateDots() {
+                this.dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+            
+            startAutoPlay() {
+                this.pauseAutoPlay();
+                this.autoPlayInterval = setInterval(() => this.nextSlide(), this.autoPlayDelay);
+            }
+            
+            pauseAutoPlay() {
+                clearInterval(this.autoPlayInterval);
             }
         }
-
-        // Carrusel de expertas - Versión mejorada
-        class ExpertsCarousel {
-            constructor() {
-                this.slider = document.querySelector('.team-slider');
-                this.track = document.querySelector('.team-track');
-                this.members = Array.from(document.querySelectorAll('.team-member'));
-                this.dotsContainer = document.querySelector('.team-nav');
-                this.prevBtn = this.slider.querySelector('.prev');
-                this.nextBtn = this.slider.querySelector('.next');
+        
+        // Carrusel de equipo
+        class TeamCarousel {
+            constructor(container) {
+                this.container = container;
+                this.track = container.querySelector('.carousel-track');
+                this.slides = Array.from(container.querySelectorAll('.carousel-slide'));
+                this.dots = Array.from(container.querySelectorAll('.carousel-dot'));
+                this.prevBtn = container.querySelector('.prev');
+                this.nextBtn = container.querySelector('.next');
                 this.currentIndex = 0;
-                this.interval = null;
-                this.autoPlayDelay = 5000;
-                this.touchStartX = 0;
-                this.touchEndX = 0;
+                this.autoPlayInterval = null;
+                this.autoPlayDelay = 6000;
+                this.isDragging = false;
+                this.startPos = 0;
+                this.currentTranslate = 0;
+                this.prevTranslate = 0;
                 
-                if (this.members.length > 1) {
-                    this.init();
-                }
+                this.init();
             }
             
             init() {
-                this.setupTrack();
-                this.createDots();
-                this.setupControls();
-                this.startAutoPlay();
+                this.setSlideWidth();
                 this.setupEventListeners();
-            }
-            
-            setupTrack() {
-                const memberWidthPercentage = 100 / this.members.length;
-                const marginCompensation = (15 * 2 * this.members.length) / this.slider.offsetWidth * 100;
-                
-                this.track.style.width = `calc(${100 * this.members.length}% + ${marginCompensation}%)`;
-                
-                this.members.forEach(member => {
-                    member.style.flex = `0 0 calc(${memberWidthPercentage}% - 30px)`;
-                    member.style.width = `calc(${memberWidthPercentage}% - 30px)`;
-                });
-                
-                this.updateTrackPosition();
-            }
-            
-            createDots() {
-                this.dotsContainer.innerHTML = '';
-                this.members.forEach((_, index) => {
-                    const dot = document.createElement('span');
-                    dot.className = 'team-dot';
-                    if (index === 0) dot.classList.add('active');
-                    dot.dataset.index = index;
-                    dot.addEventListener('click', () => this.goToSlide(index));
-                    this.dotsContainer.appendChild(dot);
-                });
-            }
-            
-            setupControls() {
-                if (this.prevBtn && this.nextBtn) {
-                    this.prevBtn.addEventListener('click', () => this.prevSlide());
-                    this.nextBtn.addEventListener('click', () => this.nextSlide());
-                }
-            }
-            
-            updateTrackPosition() {
-                const translateValue = `calc(-${this.currentIndex * 100}% - ${this.currentIndex * 15 * 2}px)`;
-                this.track.style.transform = `translateX(${translateValue})`;
-            }
-            
-            goToSlide(index) {
-                this.currentIndex = (index + this.members.length) % this.members.length;
-                this.updateTrackPosition();
-                this.updateDots();
-                this.resetAutoPlay();
-            }
-            
-            updateDots() {
-                const dots = this.dotsContainer.querySelectorAll('.team-dot');
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === this.currentIndex);
-                });
-            }
-            
-            nextSlide() {
-                this.goToSlide(this.currentIndex + 1);
-            }
-            
-            prevSlide() {
-                this.goToSlide(this.currentIndex - 1);
-            }
-            
-            startAutoPlay() {
-                this.interval = setInterval(() => {
-                    this.nextSlide();
-                }, this.autoPlayDelay);
-            }
-            
-            resetAutoPlay() {
-                clearInterval(this.interval);
                 this.startAutoPlay();
+                this.goToSlide(0);
             }
             
-            handleTouchStart(e) {
-                this.touchStartX = e.changedTouches[0].screenX;
-            }
-            
-            handleTouchEnd(e) {
-                this.touchEndX = e.changedTouches[0].screenX;
-                this.handleSwipe();
-            }
-            
-            handleSwipe() {
-                const difference = this.touchStartX - this.touchEndX;
-                if (difference > 50) {
-                    this.nextSlide();
-                } else if (difference < -50) {
-                    this.prevSlide();
-                }
+            setSlideWidth() {
+                const slideWidth = this.container.offsetWidth;
+                this.slides.forEach(slide => {
+                    slide.style.minWidth = `${slideWidth}px`;
+                });
             }
             
             setupEventListeners() {
-                this.slider.addEventListener('mouseenter', () => {
-                    clearInterval(this.interval);
+                // Botones de navegación
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                
+                // Dots de navegación
+                this.dots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        const index = parseInt(dot.getAttribute('data-index'));
+                        this.goToSlide(index);
+                    });
                 });
                 
-                this.slider.addEventListener('mouseleave', () => {
-                    this.startAutoPlay();
+                // Eventos de touch para dispositivos móviles
+                this.track.addEventListener('touchstart', this.touchStart.bind(this));
+                this.track.addEventListener('touchmove', this.touchMove.bind(this));
+                this.track.addEventListener('touchend', this.touchEnd.bind(this));
+                
+                // Eventos de mouse para desktop
+                this.track.addEventListener('mousedown', this.touchStart.bind(this));
+                this.track.addEventListener('mousemove', this.touchMove.bind(this));
+                this.track.addEventListener('mouseup', this.touchEnd.bind(this));
+                this.track.addEventListener('mouseleave', this.touchEnd.bind(this));
+                
+                // Redimensionar ventana
+                window.addEventListener('resize', () => {
+                    this.setSlideWidth();
+                    this.goToSlide(this.currentIndex);
                 });
                 
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') {
-                        this.prevSlide();
-                    } else if (e.key === 'ArrowRight') {
-                        this.nextSlide();
+                // Pausar autoplay al interactuar
+                this.container.addEventListener('mouseenter', () => {
+                    if (this.autoPlayInterval) {
+                        this.pauseAutoPlay();
                     }
                 });
                 
-                this.track.addEventListener('touchstart', (e) => this.handleTouchStart(e), {passive: true});
-                this.track.addEventListener('touchend', (e) => this.handleTouchEnd(e), {passive: true});
+                this.container.addEventListener('mouseleave', () => {
+                    if (this.autoPlayInterval) {
+                        this.startAutoPlay();
+                    }
+                });
+            }
+            
+            touchStart(e) {
+                if (e.type === 'mousedown') {
+                    e.preventDefault();
+                    this.isDragging = true;
+                    this.startPos = e.clientX;
+                } else {
+                    this.startPos = e.touches[0].clientX;
+                }
+                
+                this.prevTranslate = this.currentTranslate;
+                this.track.style.transition = 'none';
+                
+                // Pausar autoplay durante el arrastre
+                if (this.autoPlayInterval) {
+                    this.pauseAutoPlay();
+                }
+            }
+            
+            touchMove(e) {
+                if (e.type === 'mousemove' && !this.isDragging) return;
+                
+                const currentPosition = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+                const diff = currentPosition - this.startPos;
+                this.currentTranslate = this.prevTranslate + diff;
+                this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+            }
+            
+            touchEnd() {
+                this.isDragging = false;
+                this.track.style.transition = 'transform 0.5s ease';
+                
+                const movedBy = this.currentTranslate - this.prevTranslate;
+                
+                if (movedBy < -50 && this.currentIndex < this.slides.length - 1) {
+                    this.nextSlide();
+                } else if (movedBy > 50 && this.currentIndex > 0) {
+                    this.prevSlide();
+                } else {
+                    this.goToSlide(this.currentIndex);
+                }
+                
+                // Reanudar autoplay
+                if (this.autoPlayInterval) {
+                    this.startAutoPlay();
+                }
+            }
+            
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.currentTranslate = -this.slides[this.currentIndex].offsetLeft;
+                this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+                
+                // Actualizar dots
+                this.updateDots();
+            }
+            
+            nextSlide() {
+                if (this.currentIndex === this.slides.length - 1) {
+                    this.goToSlide(0);
+                } else {
+                    this.goToSlide(this.currentIndex + 1);
+                }
+            }
+            
+            prevSlide() {
+                if (this.currentIndex === 0) {
+                    this.goToSlide(this.slides.length - 1);
+                } else {
+                    this.goToSlide(this.currentIndex - 1);
+                }
+            }
+            
+            updateDots() {
+                this.dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+            
+            startAutoPlay() {
+                this.pauseAutoPlay();
+                this.autoPlayInterval = setInterval(() => this.nextSlide(), this.autoPlayDelay);
+            }
+            
+            pauseAutoPlay() {
+                clearInterval(this.autoPlayInterval);
             }
         }
 
         // Inicializar cuando el DOM esté listo
         document.addEventListener('DOMContentLoaded', () => {
-            new TestimonialsCarousel();
-            new ExpertsCarousel();
+            // Carrusel de testimonios
+            const testimonialCarousel = new TestimonialsCarousel(
+                document.querySelector('.testimonials .carousel-container')
+            );
+            
+            // Carrusel del equipo
+            const teamCarousel = new TeamCarousel(
+                document.querySelector('.team .carousel-container')
+            );
         });
     </script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
