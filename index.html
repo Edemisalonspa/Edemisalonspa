@@ -1348,30 +1348,28 @@
 
             /* Testimonials stats - Nueva versión móvil */
             .testimonials-stats {
-                flex-direction: column;
+                flex-direction: row;
+                flex-wrap: wrap;
                 gap: 15px;
                 padding: 0 20px;
             }
             
             .stat-card {
-                min-width: 100%;
+                min-width: calc(50% - 15px);
                 padding: 20px;
                 display: flex;
-                align-items: center;
-                justify-content: space-between;
-                text-align: left;
+                flex-direction: column;
+                text-align: center;
             }
             
             .stat-number {
                 font-size: 2rem;
-                margin-bottom: 0;
-                margin-right: 15px;
+                margin-bottom: 5px;
             }
             
             .stat-label {
-                font-size: 1rem;
-                text-align: right;
-                flex-grow: 1;
+                font-size: 0.9rem;
+                text-align: center;
             }
 
             /* Ocultar promo banner en móviles */
