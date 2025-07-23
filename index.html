@@ -802,7 +802,7 @@
             color: #666;
         }
 
-        /* Carrusel de testimonios mejorado */
+        /* Carrusel de testimonios - Estilos corregidos */
         .testimonials-slider {
             position: relative;
             max-width: 800px;
@@ -813,24 +813,28 @@
         .testimonials-container {
             width: 100%;
             overflow: hidden;
+            position: relative;
         }
 
         .testimonials-track {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
 
         .testimonial-card {
-            min-width: 100%;
-            padding: 30px;
+            flex: 0 0 calc(100% - 30px);
+            margin: 0 15px;
             box-sizing: border-box;
-            flex-shrink: 0;
+            min-width: 0;
+            padding: 30px;
             background-color: var(--light);
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             text-align: center;
-            margin: 0 15px;
         }
 
         .testimonial-avatar {
@@ -916,7 +920,7 @@
             background: var(--primary);
         }
 
-        /* Team Section - Carrusel mejorado */
+        /* Team Section - Carrusel con estilos corregidos */
         .team {
             background-color: var(--gray);
         }
@@ -931,19 +935,23 @@
         .team-container {
             width: 100%;
             overflow: hidden;
+            position: relative;
         }
 
         .team-track {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
 
         .team-member {
-            min-width: 100%;
-            padding: 0 15px;
+            flex: 0 0 calc(100% - 30px);
+            margin: 0 15px;
             box-sizing: border-box;
-            flex-shrink: 0;
+            min-width: 0;
             background-color: var(--light);
             border-radius: 10px;
             overflow: hidden;
@@ -1414,6 +1422,19 @@
             .promo-banner {
                 display: none !important;
             }
+
+            /* Ajustes para carruseles en móviles */
+            .testimonial-card,
+            .team-member {
+                flex: 0 0 calc(100% - 20px);
+                margin: 0 10px;
+            }
+
+            .testimonials-slider,
+            .team-slider {
+                max-width: 100%;
+                padding: 0 10px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1476,6 +1497,20 @@
 
             .promo-content {
                 flex-direction: column;
+            }
+
+            /* Ajustes finales para carruseles */
+            .testimonial-card,
+            .team-member {
+                flex: 0 0 calc(100% - 10px);
+                margin: 0 5px;
+                padding: 20px 15px;
+            }
+
+            .carousel-control {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -2431,10 +2466,17 @@
             }
             
             setupTrack() {
-                this.track.style.width = `${this.cards.length * 100}%`;
+                const cardWidthPercentage = 100 / this.cards.length;
+                const marginCompensation = (15 * 2 * this.cards.length) / this.slider.offsetWidth * 100;
+                
+                this.track.style.width = `calc(${100 * this.cards.length}% + ${marginCompensation}%)`;
+                
                 this.cards.forEach(card => {
-                    card.style.width = `${100 / this.cards.length}%`;
+                    card.style.flex = `0 0 calc(${cardWidthPercentage}% - 30px)`;
+                    card.style.width = `calc(${cardWidthPercentage}% - 30px)`;
                 });
+                
+                this.updateTrackPosition();
             }
             
             createDots() {
@@ -2456,17 +2498,15 @@
                 }
             }
             
+            updateTrackPosition() {
+                const translateValue = `calc(-${this.currentIndex * 100}% - ${this.currentIndex * 15 * 2}px)`;
+                this.track.style.transform = `translateX(${translateValue})`;
+            }
+            
             goToSlide(index) {
-                // Asegurar que el índice esté dentro del rango
                 this.currentIndex = (index + this.cards.length) % this.cards.length;
-                
-                // Mover el track
-                this.track.style.transform = `translateX(-${this.currentIndex * (100 / this.cards.length)}%)`;
-                
-                // Actualizar dots
+                this.updateTrackPosition();
                 this.updateDots();
-                
-                // Reiniciar autoplay
                 this.resetAutoPlay();
             }
             
@@ -2508,16 +2548,13 @@
             handleSwipe() {
                 const difference = this.touchStartX - this.touchEndX;
                 if (difference > 50) {
-                    // Swipe izquierda - siguiente slide
                     this.nextSlide();
                 } else if (difference < -50) {
-                    // Swipe derecha - slide anterior
                     this.prevSlide();
                 }
             }
             
             setupEventListeners() {
-                // Pausar autoplay al interactuar
                 this.slider.addEventListener('mouseenter', () => {
                     clearInterval(this.interval);
                 });
@@ -2526,7 +2563,6 @@
                     this.startAutoPlay();
                 });
                 
-                // Navegación con teclado
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowLeft') {
                         this.prevSlide();
@@ -2535,7 +2571,6 @@
                     }
                 });
                 
-                // Soporte para touch en dispositivos móviles
                 this.track.addEventListener('touchstart', (e) => this.handleTouchStart(e), {passive: true});
                 this.track.addEventListener('touchend', (e) => this.handleTouchEnd(e), {passive: true});
             }
@@ -2570,10 +2605,17 @@
             }
             
             setupTrack() {
-                this.track.style.width = `${this.members.length * 100}%`;
+                const memberWidthPercentage = 100 / this.members.length;
+                const marginCompensation = (15 * 2 * this.members.length) / this.slider.offsetWidth * 100;
+                
+                this.track.style.width = `calc(${100 * this.members.length}% + ${marginCompensation}%)`;
+                
                 this.members.forEach(member => {
-                    member.style.width = `${100 / this.members.length}%`;
+                    member.style.flex = `0 0 calc(${memberWidthPercentage}% - 30px)`;
+                    member.style.width = `calc(${memberWidthPercentage}% - 30px)`;
                 });
+                
+                this.updateTrackPosition();
             }
             
             createDots() {
@@ -2595,17 +2637,15 @@
                 }
             }
             
+            updateTrackPosition() {
+                const translateValue = `calc(-${this.currentIndex * 100}% - ${this.currentIndex * 15 * 2}px)`;
+                this.track.style.transform = `translateX(${translateValue})`;
+            }
+            
             goToSlide(index) {
-                // Asegurar que el índice esté dentro del rango
                 this.currentIndex = (index + this.members.length) % this.members.length;
-                
-                // Mover el track
-                this.track.style.transform = `translateX(-${this.currentIndex * (100 / this.members.length)}%)`;
-                
-                // Actualizar dots
+                this.updateTrackPosition();
                 this.updateDots();
-                
-                // Reiniciar autoplay
                 this.resetAutoPlay();
             }
             
@@ -2647,16 +2687,13 @@
             handleSwipe() {
                 const difference = this.touchStartX - this.touchEndX;
                 if (difference > 50) {
-                    // Swipe izquierda - siguiente slide
                     this.nextSlide();
                 } else if (difference < -50) {
-                    // Swipe derecha - slide anterior
                     this.prevSlide();
                 }
             }
             
             setupEventListeners() {
-                // Pausar autoplay al interactuar
                 this.slider.addEventListener('mouseenter', () => {
                     clearInterval(this.interval);
                 });
@@ -2665,7 +2702,6 @@
                     this.startAutoPlay();
                 });
                 
-                // Navegación con teclado
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowLeft') {
                         this.prevSlide();
@@ -2674,7 +2710,6 @@
                     }
                 });
                 
-                // Soporte para touch en dispositivos móviles
                 this.track.addEventListener('touchstart', (e) => this.handleTouchStart(e), {passive: true});
                 this.track.addEventListener('touchend', (e) => this.handleTouchEnd(e), {passive: true});
             }
