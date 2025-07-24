@@ -87,12 +87,11 @@
     </script>
 
     <style>
-        /* Variables CSS */
         :root {
-            --primary: #E75480;
+            --primary: #E75480; /* Rosa fucsia principal */
             --primary-light: #ff85a9;
             --primary-dark: #b3446c;
-            --secondary: #FFD1DC;
+            --secondary: #FFD1DC; /* Rosa claro */
             --dark: #333333;
             --light: #FFFFFF;
             --gray: #F5F5F5;
@@ -104,7 +103,6 @@
             --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        /* Reset y Estilos Base */
         * {
             margin: 0;
             padding: 0;
@@ -204,6 +202,18 @@
             margin-bottom: 20px;
             text-align: center;
             color: var(--primary-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
         }
 
         .section-subtitle {
@@ -702,26 +712,34 @@
             color: var(--primary);
         }
 
-        /* Gallery Section */
+        /* Gallery Section - Convertida a Carrusel */
         .gallery {
             background-color: var(--gray);
         }
 
         .gallery-container {
-            margin-top: 50px;
+            max-width: 1000px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        .gallery-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 0 15px;
         }
 
         .gallery-item {
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            height: 250px;
+            height: 400px;
             cursor: pointer;
         }
 
@@ -730,10 +748,6 @@
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
         }
 
         .gallery-overlay {
@@ -746,25 +760,68 @@
             display: flex;
             align-items: flex-end;
             padding: 20px;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .gallery-overlay {
             opacity: 1;
         }
 
         .gallery-caption {
             color: var(--light);
-            transform: translateY(20px);
+            transform: translateY(0);
             transition: var(--transition);
         }
 
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
+        .gallery-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(231, 84, 128, 0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
 
-        /* Testimonials Section */
+        .gallery-btn:hover {
+            background: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-btn.prev {
+            left: 10px;
+        }
+
+        .gallery-btn.next {
+            right: 10px;
+        }
+
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            background: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background: var(--primary);
+        }
+
+        /* Testimonials Section - Estadísticas optimizadas */
         .testimonials {
             background-color: var(--light);
         }
@@ -775,20 +832,17 @@
             gap: 30px;
             margin: 40px 0;
             flex-wrap: wrap;
-            overflow-x: auto;
-            padding-bottom: 20px;
-            scroll-snap-type: x mandatory;
         }
 
         .stat-card {
             background: var(--light);
-            padding: 30px;
+            padding: 25px;
             border-radius: 10px;
             text-align: center;
             min-width: 150px;
+            flex: 1;
+            max-width: 180px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            scroll-snap-align: start;
-            flex-shrink: 0;
         }
 
         .stat-number {
@@ -804,101 +858,43 @@
             color: #666;
         }
 
-        /* Carrusel de testimonios - Versión mejorada */
-        .carousel {
+        /* Carrusel de testimonios */
+        .carousel-container {
             position: relative;
-            max-width: 100%;
-            margin: 50px auto;
+            max-width: 1000px;
+            margin: 40px auto;
             overflow: hidden;
         }
-        
-        .carousel-container {
+
+        .carousel-track {
             display: flex;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
-        }
-        
-        .carousel-item {
-            flex: 0 0 100%;
-            padding: 0 15px;
-            box-sizing: border-box;
-        }
-        
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(231, 84, 128, 0.8);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-        
-        .carousel-control:hover {
-            background: var(--primary);
-        }
-        
-        .carousel-control.prev {
-            left: 0;
-        }
-        
-        .carousel-control.next {
-            right: 0;
-        }
-        
-        .carousel-nav {
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .carousel-dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background: #ccc;
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        
-        .carousel-dot.active {
-            background: var(--primary);
-        }
-        
-        /* Adaptaciones para desktop */
-        @media (min-width: 768px) {
-            .carousel-item {
-                flex: 0 0 50%;
-            }
-        }
-        
-        @media (min-width: 992px) {
-            .carousel-item {
-                flex: 0 0 33.333%;
-            }
+            transition: transform 0.5s ease;
         }
 
-        .testimonial-card {
-            padding: 30px;
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 0 15px;
+        }
+
+        .testimonial-slide {
             background-color: var(--light);
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             text-align: center;
-            height: 100%;
+        }
+
+        .team-slide {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         .testimonial-avatar {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
             margin: 0 auto 20px;
@@ -909,6 +905,8 @@
             font-style: italic;
             margin-bottom: 20px;
             position: relative;
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         .testimonial-text:before,
@@ -922,30 +920,13 @@
         .testimonial-author {
             font-weight: 600;
             margin-bottom: 5px;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
         }
 
         .testimonial-role {
             color: var(--primary);
             font-size: 0.9rem;
-        }
-
-        /* Team Section - Carrusel con estilos corregidos */
-        .team {
-            background-color: var(--gray);
-        }
-
-        .team-member {
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: var(--transition);
-            height: 100%;
-        }
-
-        .team-member:hover {
-            transform: translateY(-10px);
         }
 
         .team-member-image {
@@ -960,16 +941,13 @@
             transition: var(--transition);
         }
 
-        .team-member:hover .team-member-image img {
-            transform: scale(1.05);
-        }
-
         .team-member-content {
-            padding: 25px 20px;
+            padding: 25px;
+            text-align: center;
         }
 
         .team-member-name {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 5px;
             color: var(--primary-dark);
         }
@@ -978,32 +956,89 @@
             color: var(--primary);
             margin-bottom: 15px;
             font-weight: 500;
+            font-size: 1.1rem;
         }
 
         .team-member-bio {
-            margin: 15px 0;
-            font-size: 0.95rem;
+            margin: 20px 0;
+            font-size: 1rem;
             color: #555;
+            line-height: 1.6;
         }
 
-        .team-member-social {
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(231, 84, 128, 0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
+        }
+
+        .carousel-dots {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            margin-top: 20px;
         }
 
-        .team-member-social a {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: var(--primary-light);
-            padding: 8px 15px;
-            border-radius: 20px;
-            color: white;
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            background: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
         }
 
-        .team-member-social a:hover {
+        .carousel-dot.active {
             background: var(--primary);
+        }
+
+        .team-consult-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .team-consult-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(231, 84, 128, 0.3);
+        }
+
+        .team-consult-btn i {
+            margin-right: 8px;
         }
 
         /* Contact Section */
@@ -1335,6 +1370,10 @@
             .brand-tagline {
                 font-size: 0.65rem;
             }
+            
+            .gallery-item {
+                height: 350px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1368,23 +1407,57 @@
                 font-size: 0.9rem;
             }
 
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-
+            /* Estadísticas optimizadas para móvil */
             .testimonials-stats {
+                display: flex;
                 flex-wrap: nowrap;
-                justify-content: flex-start;
+                overflow-x: auto;
                 padding: 0 20px 20px;
+                justify-content: flex-start;
+                scrollbar-width: none;
+            }
+            
+            .testimonials-stats::-webkit-scrollbar {
+                display: none;
             }
             
             .stat-card {
-                min-width: 200px;
+                min-width: 140px;
+                flex: 0 0 auto;
+                margin-right: 15px;
+                padding: 15px;
+            }
+            
+            .stat-card:last-child {
+                margin-right: 0;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
             }
 
             /* Ocultar promo banner en móviles */
             .promo-banner {
                 display: none !important;
+            }
+
+            /* Ajustes para carruseles en móviles */
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .testimonial-slide {
+                padding: 20px;
+            }
+            
+            .team-member-image {
+                height: 300px;
+            }
+            
+            .gallery-item {
+                height: 300px;
             }
         }
 
@@ -1430,15 +1503,6 @@
                 font-size: 1.3rem;
             }
 
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .gallery-item {
-                height: 200px;
-            }
-
             .promo-banner {
                 flex-direction: column;
                 gap: 10px;
@@ -1448,6 +1512,25 @@
 
             .promo-content {
                 flex-direction: column;
+            }
+
+            /* Ajustes finales para carruseles */
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .testimonial-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .team-member-image {
+                height: 250px;
+            }
+            
+            .gallery-item {
+                height: 250px;
             }
         }
     </style>
@@ -1861,91 +1944,119 @@
         </div>
     </section>
     
-    <!-- Gallery Section -->
+    <!-- Gallery Section - Convertida a Carrusel -->
     <section class="section gallery" id="gallery">
         <div class="container">
             <h2 class="section-title">Nuestros Trabajos</h2>
             <p class="section-subtitle">Algunos ejemplos de nuestros servicios realizados a clientes satisfechos</p>
             
             <div class="gallery-container">
-                <div class="gallery-grid">
-                    <!-- Image 1 -->
-                    <div class="gallery-item">
-                        <picture>
-                            <source srcset="assets/img/gallery/trabajo-1.webp" type="image/webp">
-                            <source srcset="assets/img/gallery/trabajo-1.jpg" type="image/jpeg"> 
-                            <img src="assets/img/gallery/trabajo-1.jpg" alt="Tinte profesional - Cliente María" width="400" height="250" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">Tinte profesional - Cliente María</div>
+                <div class="gallery-track">
+                    <!-- Slide 1 -->
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="assets/img/gallery/trabajo-1.webp" type="image/webp">
+                                <source srcset="assets/img/gallery/trabajo-1.jpg" type="image/jpeg"> 
+                                <img src="assets/img/gallery/trabajo-1.jpg" alt="Tinte profesional - Cliente María" width="600" height="400" loading="lazy">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-caption">Tinte profesional - Cliente María</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Image 2 -->
-                    <div class="gallery-item">
-                        <picture>
-                            <source srcset="assets/img/gallery/trabajo-2.webp" type="image/webp">
-                            <source srcset="assets/img/gallery/trabajo-2.jpg" type="image/jpeg"> 
-                            <img src="assets/img/gallery/trabajo-2.jpg" alt="Peinado para boda - Cliente Ana" width="400" height="250" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">Peinado para boda - Cliente Ana</div>
+                    <!-- Slide 2 -->
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="assets/img/gallery/trabajo-2.webp" type="image/webp">
+                                <source srcset="assets/img/gallery/trabajo-2.jpg" type="image/jpeg"> 
+                                <img src="assets/img/gallery/trabajo-2.jpg" alt="Peinado para boda - Cliente Ana" width="600" height="400" loading="lazy">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-caption">Peinado para boda - Cliente Ana</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Image 3 -->
-                    <div class="gallery-item">
-                        <picture>
-                            <source srcset="assets/img/gallery/trabajo-3.webp" type="image/webp">
-                            <source srcset="assets/img/gallery/trabajo-3.jpg" type="image/jpeg"> 
-                            <img src="assets/img/gallery/trabajo-3.jpg" alt="Corte moderno - Cliente Carlos" width="400" height="250" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">Corte moderno - Cliente Carlos</div>
+                    <!-- Slide 3 -->
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="assets/img/gallery/trabajo-3.webp" type="image/webp">
+                                <source srcset="assets/img/gallery/trabajo-3.jpg" type="image/jpeg"> 
+                                <img src="assets/img/gallery/trabajo-3.jpg" alt="Corte moderno - Cliente Carlos" width="600" height="400" loading="lazy">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-caption">Corte moderno - Cliente Carlos</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Image 4 -->
-                    <div class="gallery-item">
-                        <picture>
-                            <source srcset="assets/img/gallery/trabajo-4.webp" type="image/webp">
-                            <source srcset="assets/img/gallery/trabajo-4.jpg" type="image/jpeg"> 
-                            <img src="assets/img/gallery/trabajo-4.jpg" alt="Tratamiento de keratina - Cliente Laura" width="400" height="250" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">Tratamiento de keratina - Cliente Laura</div>
+                    <!-- Slide 4 -->
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="assets/img/gallery/trabajo-4.webp" type="image/webp">
+                                <source srcset="assets/img/gallery/trabajo-4.jpg" type="image/jpeg"> 
+                                <img src="assets/img/gallery/trabajo-4.jpg" alt="Tratamiento de keratina - Cliente Laura" width="600" height="400" loading="lazy">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-caption">Tratamiento de keratina - Cliente Laura</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Image 5 -->
-                    <div class="gallery-item">
-                        <picture>
-                            <source srcset="assets/img/gallery/trabajo-5.webp" type="image/webp">
-                            <source srcset="assets/img/gallery/trabajo-5.jpg" type="image/jpeg"> 
-                            <img src="assets/img/gallery/trabajo-5.jpg" alt="Peinado para quinceañera - Cliente Sofía" width="400" height="250" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">Peinado para quinceañera - Cliente Sofía</div>
+                    <!-- Slide 5 -->
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="assets/img/gallery/trabajo-5.webp" type="image/webp">
+                                <source srcset="assets/img/gallery/trabajo-5.jpg" type="image/jpeg"> 
+                                <img src="assets/img/gallery/trabajo-5.jpg" alt="Peinado para quinceañera - Cliente Sofía" width="600" height="400" loading="lazy">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-caption">Peinado para quinceañera - Cliente Sofía</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Image 6 -->
-                    <div class="gallery-item">
-                        <picture>
-                            <source srcset="assets/img/gallery/trabajo-6.webp" type="image/webp">
-                            <source srcset="assets/img/gallery/trabajo-6.jpg" type="image/jpeg"> 
-                            <img src="assets/img/gallery/trabajo-6.jpg" alt="Color fantasía - Cliente Daniela" width="400" height="250" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">Color fantasía - Cliente Daniela</div>
+                    <!-- Slide 6 -->
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="assets/img/gallery/trabajo-6.webp" type="image/webp">
+                                <source srcset="assets/img/gallery/trabajo-6.jpg" type="image/jpeg"> 
+                                <img src="assets/img/gallery/trabajo-6.jpg" alt="Color fantasía - Cliente Daniela" width="600" height="400" loading="lazy">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-caption">Color fantasía - Cliente Daniela</div>
+                            </div>
                         </div>
                     </div>
+                </div>
+                
+                <button class="gallery-btn prev" aria-label="Imagen anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-btn next" aria-label="Imagen siguiente">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="gallery-dots">
+                    <span class="gallery-dot active" data-index="0"></span>
+                    <span class="gallery-dot" data-index="1"></span>
+                    <span class="gallery-dot" data-index="2"></span>
+                    <span class="gallery-dot" data-index="3"></span>
+                    <span class="gallery-dot" data-index="4"></span>
+                    <span class="gallery-dot" data-index="5"></span>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section - Estadísticas optimizadas -->
     <section class="section testimonials">
         <div class="container">
             <h2 class="section-title">Clientes Satisfechas</h2>
@@ -1966,15 +2077,15 @@
                 </div>
             </div>
             
-            <div class="carousel" id="testimonials-carousel">
-                <div class="carousel-container">
-                    <!-- Testimonial 1 -->
-                    <div class="carousel-item">
-                        <div class="testimonial-card">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Testimonio 1 - María -->
+                    <div class="carousel-slide">
+                        <div class="testimonial-slide">
                             <picture>
                                 <source srcset="assets/img/testimonials/cliente-1.webp" type="image/webp">
                                 <source srcset="assets/img/testimonials/cliente-1.jpg" type="image/jpeg"> 
-                                <img src="assets/img/testimonials/cliente-1.jpg" alt="Cliente María" class="testimonial-avatar" width="80" height="80" loading="lazy">
+                                <img src="assets/img/testimonials/cliente-1.jpg" alt="Cliente María" class="testimonial-avatar" width="100" height="100" loading="lazy">
                             </picture>
                             <p class="testimonial-text">El mejor salón de Huancayo. Hace años que confío en ellos para mis tintes y nunca me han defraudado. Mi cabello luce espectacular.</p>
                             <h4 class="testimonial-author">María Fernández</h4>
@@ -1982,13 +2093,13 @@
                         </div>
                     </div>
                     
-                    <!-- Testimonial 2 -->
-                    <div class="carousel-item">
-                        <div class="testimonial-card">
+                    <!-- Testimonio 2 - Ana -->
+                    <div class="carousel-slide">
+                        <div class="testimonial-slide">
                             <picture>
                                 <source srcset="assets/img/testimonials/cliente-2.webp" type="image/webp">
                                 <source srcset="assets/img/testimonials/cliente-2.jpg" type="image/jpeg"> 
-                                <img src="assets/img/testimonials/cliente-2.jpg" alt="Cliente Ana" class="testimonial-avatar" width="80" height="80" loading="lazy">
+                                <img src="assets/img/testimonials/cliente-2.jpg" alt="Cliente Ana" class="testimonial-avatar" width="100" height="100" loading="lazy">
                             </picture>
                             <p class="testimonial-text">Para mi boda me hicieron un peinado espectacular que duró toda la noche. Las fotos quedaron increíbles, ¡gracias!</p>
                             <h4 class="testimonial-author">Ana Torres</h4>
@@ -1996,29 +2107,33 @@
                         </div>
                     </div>
                     
-                    <!-- Testimonial 3 -->
-                    <div class="carousel-item">
-                        <div class="testimonial-card">
+                    <!-- Testimonio 3 - Pari -->
+                    <div class="carousel-slide">
+                        <div class="testimonial-slide">
                             <picture>
                                 <source srcset="assets/img/testimonials/cliente-3.webp" type="image/webp">
                                 <source srcset="assets/img/testimonials/cliente-3.jpg" type="image/jpeg"> 
-                                <img src="assets/img/testimonials/cliente-3.jpg" alt="Cliente Carlos" class="testimonial-avatar" width="80" height="80" loading="lazy">
+                                <img src="assets/img/testimonials/cliente-3.jpg" alt="Cliente Pari" class="testimonial-avatar" width="100" height="100" loading="lazy">
                             </picture>
                             <p class="testimonial-text">Soy cliente desde hace años. Siempre me dan excelentes recomendaciones para mi cabello y los resultados son perfectos.</p>
-                            <h4 class="testimonial-author">Carlos Mendoza</h4>
+                            <h4 class="testimonial-author">Pari</h4>
                             <p class="testimonial-role">Cliente frecuente</p>
                         </div>
                     </div>
                 </div>
                 
-                <button class="carousel-control prev" aria-label="Anterior testimonio">
+                <button class="carousel-btn prev" aria-label="Anterior testimonio">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="carousel-control next" aria-label="Siguiente testimonio">
+                <button class="carousel-btn next" aria-label="Siguiente testimonio">
                     <i class="fas fa-chevron-right"></i>
                 </button>
                 
-                <div class="carousel-nav"></div>
+                <div class="carousel-dots">
+                    <span class="carousel-dot active" data-index="0"></span>
+                    <span class="carousel-dot" data-index="1"></span>
+                    <span class="carousel-dot" data-index="2"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -2029,11 +2144,11 @@
             <h2 class="section-title">Nuestras Expertas</h2>
             <p class="section-subtitle">Profesionales certificadas en coloración y peinados para eventos</p>
             
-            <div class="carousel" id="team-carousel">
-                <div class="carousel-container">
+            <div class="carousel-container">
+                <div class="carousel-track">
                     <!-- Eva Suarez -->
-                    <div class="carousel-item">
-                        <div class="team-member">
+                    <div class="carousel-slide">
+                        <div class="team-slide">
                             <div class="team-member-image">
                                 <picture>
                                     <source srcset="assets/img/team/eva-suarez.webp" type="image/webp">
@@ -2045,16 +2160,16 @@
                                 <h3 class="team-member-name">Eva Suarez</h3>
                                 <p class="team-member-role">Fundadora & Especialista en Color</p>
                                 <p class="team-member-bio">15 años de experiencia en tintes y transformaciones capilares. Certificada en las marcas más prestigiosas.</p>
-                                <div class="team-member-social">
-                                    <a href="https://wa.me/51974161367"><i class="fab fa-whatsapp"></i> Consultar</a>
-                                </div>
+                                <a href="https://wa.me/51974161367" class="team-consult-btn">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Damaris -->
-                    <div class="carousel-item">
-                        <div class="team-member">
+                    <div class="carousel-slide">
+                        <div class="team-slide">
                             <div class="team-member-image">
                                 <picture>
                                     <source srcset="assets/img/team/damaris.webp" type="image/webp">
@@ -2066,22 +2181,25 @@
                                 <h3 class="team-member-name">Damaris</h3>
                                 <p class="team-member-role">Especialista en Peinados para Eventos</p>
                                 <p class="team-member-bio">Experta en crear peinados duraderos y elegantes para bodas, quinceañeras y graduaciones.</p>
-                                <div class="team-member-social">
-                                    <a href="https://wa.me/51974161367"><i class="fab fa-whatsapp"></i> Consultar</a>
-                                </div>
+                                <a href="https://wa.me/51974161367" class="team-consult-btn">
+                                    <i class="fab fa-whatsapp"></i> Consultar
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <button class="carousel-control prev" aria-label="Anterior experta">
+                <button class="carousel-btn prev" aria-label="Anterior experta">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="carousel-control next" aria-label="Siguiente experta">
+                <button class="carousel-btn next" aria-label="Siguiente experta">
                     <i class="fas fa-chevron-right"></i>
                 </button>
                 
-                <div class="carousel-nav"></div>
+                <div class="carousel-dots">
+                    <span class="carousel-dot active" data-index="0"></span>
+                    <span class="carousel-dot" data-index="1"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -2380,258 +2498,199 @@
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // Carrusel Unificado - Versión Mejorada
-        class UnifiedCarousel {
-            constructor(containerId) {
-                this.carousel = document.getElementById(containerId);
-                this.container = this.carousel.querySelector('.carousel-container');
-                this.items = Array.from(this.carousel.querySelectorAll('.carousel-item'));
-                this.prevBtn = this.carousel.querySelector('.prev');
-                this.nextBtn = this.carousel.querySelector('.next');
-                this.dotsContainer = this.carousel.querySelector('.carousel-nav');
+        // Carrusel Universal
+        class UniversalCarousel {
+            constructor(container) {
+                this.container = container;
+                this.track = container.querySelector('.carousel-track');
+                this.slides = Array.from(container.querySelectorAll('.carousel-slide'));
+                this.dots = Array.from(container.querySelectorAll('.carousel-dot'));
+                this.prevBtn = container.querySelector('.carousel-btn.prev');
+                this.nextBtn = container.querySelector('.carousel-btn.next');
                 this.currentIndex = 0;
-                this.itemWidth = 100;
                 this.autoPlayInterval = null;
                 this.autoPlayDelay = 5000;
-                this.touchStartX = 0;
-                this.touchEndX = 0;
-                this.isDragging = false;
-                this.dragStartX = 0;
-                this.dragDistance = 0;
                 
                 this.init();
             }
             
             init() {
-                this.setupItems();
-                this.createDots();
-                this.setupControls();
+                this.setSlideWidth();
                 this.setupEventListeners();
+                this.goToSlide(this.currentIndex);
                 this.startAutoPlay();
-                this.updateCarousel();
             }
             
-            setupItems() {
-                // Calcular el ancho basado en el número de items visibles
-                const visibleItems = this.calculateVisibleItems();
-                this.itemWidth = 100 / visibleItems;
-                
-                this.items.forEach(item => {
-                    item.style.flex = `0 0 ${this.itemWidth}%`;
-                    item.style.minWidth = `${this.itemWidth}%`;
+            setSlideWidth() {
+                const slideWidth = this.container.offsetWidth;
+                this.slides.forEach(slide => {
+                    slide.style.minWidth = `${slideWidth}px`;
                 });
-                
-                // Clonar items para loop infinito
-                this.items.forEach(item => {
-                    const clone = item.cloneNode(true);
-                    clone.classList.add('clone');
-                    this.container.appendChild(clone);
-                });
-            }
-            
-            calculateVisibleItems() {
-                if (window.innerWidth >= 992) return 3;
-                if (window.innerWidth >= 768) return 2;
-                return 1;
-            }
-            
-            createDots() {
-                this.dotsContainer.innerHTML = '';
-                const realItems = this.items.filter(item => !item.classList.contains('clone'));
-                
-                realItems.forEach((_, index) => {
-                    const dot = document.createElement('span');
-                    dot.className = 'carousel-dot';
-                    if (index === 0) dot.classList.add('active');
-                    dot.dataset.index = index;
-                    dot.addEventListener('click', () => this.goToSlide(index));
-                    this.dotsContainer.appendChild(dot);
-                });
-            }
-            
-            setupControls() {
-                this.prevBtn.addEventListener('click', () => this.prevSlide());
-                this.nextBtn.addEventListener('click', () => this.nextSlide());
             }
             
             setupEventListeners() {
-                // Touch events
-                this.container.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
-                this.container.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: true });
+                // Botones de navegación
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
                 
-                // Mouse events para drag
-                this.container.addEventListener('mousedown', (e) => this.handleMouseDown(e));
-                document.addEventListener('mousemove', (e) => this.handleMouseMove(e));
-                document.addEventListener('mouseup', () => this.handleMouseUp());
+                // Dots de navegación
+                this.dots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        const index = parseInt(dot.getAttribute('data-index'));
+                        this.goToSlide(index);
+                    });
+                });
                 
                 // Pausar autoplay al interactuar
-                this.carousel.addEventListener('mouseenter', () => this.pauseAutoPlay());
-                this.carousel.addEventListener('mouseleave', () => this.startAutoPlay());
-                
-                // Responsive adjustments
-                window.addEventListener('resize', () => this.handleResize());
-            }
-            
-            handleResize() {
-                const newVisibleItems = this.calculateVisibleItems();
-                const newItemWidth = 100 / newVisibleItems;
-                
-                if (newItemWidth !== this.itemWidth) {
-                    this.itemWidth = newItemWidth;
-                    this.items.forEach(item => {
-                        item.style.flex = `0 0 ${this.itemWidth}%`;
-                        item.style.minWidth = `${this.itemWidth}%`;
-                    });
-                    this.updateCarousel();
-                }
-            }
-            
-            handleTouchStart(e) {
-                this.touchStartX = e.touches[0].clientX;
-                this.pauseAutoPlay();
-            }
-            
-            handleTouchEnd(e) {
-                this.touchEndX = e.changedTouches[0].clientX;
-                this.handleSwipe();
-                this.startAutoPlay();
-            }
-            
-            handleMouseDown(e) {
-                this.isDragging = true;
-                this.dragStartX = e.clientX;
-                this.pauseAutoPlay();
-                e.preventDefault();
-            }
-            
-            handleMouseMove(e) {
-                if (!this.isDragging) return;
-                
-                this.dragDistance = e.clientX - this.dragStartX;
-                const transformValue = -this.currentIndex * this.itemWidth + (this.dragDistance / this.container.offsetWidth * 100);
-                this.container.style.transform = `translateX(${transformValue}%)`;
-                this.container.style.transition = 'none';
-            }
-            
-            handleMouseUp() {
-                if (!this.isDragging) return;
-                this.isDragging = false;
-                
-                if (Math.abs(this.dragDistance) > 50) {
-                    if (this.dragDistance > 0) {
-                        this.prevSlide();
-                    } else {
-                        this.nextSlide();
-                    }
-                } else {
-                    this.updateCarousel();
-                }
-                
-                this.dragDistance = 0;
-                this.startAutoPlay();
-            }
-            
-            handleSwipe() {
-                const difference = this.touchStartX - this.touchEndX;
-                
-                if (Math.abs(difference) > 50) {
-                    if (difference > 0) {
-                        this.nextSlide();
-                    } else {
-                        this.prevSlide();
-                    }
-                }
-            }
-            
-            updateCarousel() {
-                const transformValue = -this.currentIndex * this.itemWidth;
-                this.container.style.transform = `translateX(${transformValue}%)`;
-                this.container.style.transition = 'transform 0.5s ease';
-                
-                this.updateDots();
-            }
-            
-            updateDots() {
-                const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
-                const realItemsCount = this.items.filter(item => !item.classList.contains('clone')).length;
-                const activeDotIndex = this.currentIndex % realItemsCount;
-                
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === activeDotIndex);
-                });
+                this.container.addEventListener('mouseenter', () => this.pauseAutoPlay());
+                this.container.addEventListener('mouseleave', () => this.startAutoPlay());
             }
             
             goToSlide(index) {
-                const realItems = this.items.filter(item => !item.classList.contains('clone'));
-                this.currentIndex = index % realItems.length;
-                this.updateCarousel();
-                this.resetAutoPlay();
+                this.currentIndex = index;
+                this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+                
+                // Actualizar dots
+                this.updateDots();
             }
             
             nextSlide() {
-                this.currentIndex = (this.currentIndex + 1) % (this.items.length / 2);
-                this.updateCarousel();
-                this.resetAutoPlay();
+                if (this.currentIndex === this.slides.length - 1) {
+                    this.goToSlide(0);
+                } else {
+                    this.goToSlide(this.currentIndex + 1);
+                }
             }
             
             prevSlide() {
-                this.currentIndex = (this.currentIndex - 1 + (this.items.length / 2)) % (this.items.length / 2);
-                this.updateCarousel();
-                this.resetAutoPlay();
+                if (this.currentIndex === 0) {
+                    this.goToSlide(this.slides.length - 1);
+                } else {
+                    this.goToSlide(this.currentIndex - 1);
+                }
+            }
+            
+            updateDots() {
+                this.dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === this.currentIndex);
+                });
             }
             
             startAutoPlay() {
-                if (this.autoPlayInterval) clearInterval(this.autoPlayInterval);
+                this.pauseAutoPlay();
                 this.autoPlayInterval = setInterval(() => this.nextSlide(), this.autoPlayDelay);
             }
             
             pauseAutoPlay() {
-                if (this.autoPlayInterval) clearInterval(this.autoPlayInterval);
+                clearInterval(this.autoPlayInterval);
+            }
+        }
+        
+        // Carrusel de Galería
+        class GalleryCarousel {
+            constructor(container) {
+                this.container = container;
+                this.track = container.querySelector('.gallery-track');
+                this.slides = Array.from(container.querySelectorAll('.gallery-slide'));
+                this.dots = Array.from(container.querySelectorAll('.gallery-dot'));
+                this.prevBtn = container.querySelector('.gallery-btn.prev');
+                this.nextBtn = container.querySelector('.gallery-btn.next');
+                this.currentIndex = 0;
+                this.autoPlayInterval = null;
+                this.autoPlayDelay = 5000;
+                
+                this.init();
             }
             
-            resetAutoPlay() {
-                this.pauseAutoPlay();
+            init() {
+                this.setSlideWidth();
+                this.setupEventListeners();
+                this.goToSlide(this.currentIndex);
                 this.startAutoPlay();
             }
-        }
-
-        // Inicialización cuando el DOM esté listo
-        document.addEventListener('DOMContentLoaded', () => {
-            // Inicializar carrusel de testimonios
-            if (document.getElementById('testimonials-carousel')) {
-                new UnifiedCarousel('testimonials-carousel');
+            
+            setSlideWidth() {
+                const slideWidth = this.container.offsetWidth;
+                this.slides.forEach(slide => {
+                    slide.style.minWidth = `${slideWidth}px`;
+                });
             }
             
-            // Inicializar carrusel de equipo
-            if (document.getElementById('team-carousel')) {
-                new UnifiedCarousel('team-carousel');
+            setupEventListeners() {
+                // Botones de navegación
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                
+                // Dots de navegación
+                this.dots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        const index = parseInt(dot.getAttribute('data-index'));
+                        this.goToSlide(index);
+                    });
+                });
+                
+                // Pausar autoplay al interactuar
+                this.container.addEventListener('mouseenter', () => this.pauseAutoPlay());
+                this.container.addEventListener('mouseleave', () => this.startAutoPlay());
             }
-        });
-
-        // Validación del formulario
-        const contactForm = document.querySelector('.contact-form form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                const name = this.querySelector('#name');
-                const email = this.querySelector('#email');
-                const phone = this.querySelector('#phone');
-                const service = this.querySelector('#service');
+            
+            goToSlide(index) {
+                this.currentIndex = index;
+                this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
                 
-                if (!name.value || !email.value || !phone.value || !service.value) {
-                    e.preventDefault();
-                    alert('Por favor complete todos los campos requeridos');
-                    return false;
+                // Actualizar dots
+                this.updateDots();
+            }
+            
+            nextSlide() {
+                if (this.currentIndex === this.slides.length - 1) {
+                    this.goToSlide(0);
+                } else {
+                    this.goToSlide(this.currentIndex + 1);
                 }
-                
-                if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
-                    e.preventDefault();
-                    alert('Por favor ingrese un email válido');
-                    return false;
+            }
+            
+            prevSlide() {
+                if (this.currentIndex === 0) {
+                    this.goToSlide(this.slides.length - 1);
+                } else {
+                    this.goToSlide(this.currentIndex - 1);
                 }
-                
-                return true;
-            });
+            }
+            
+            updateDots() {
+                this.dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === this.currentIndex);
+                });
+            }
+            
+            startAutoPlay() {
+                this.pauseAutoPlay();
+                this.autoPlayInterval = setInterval(() => this.nextSlide(), this.autoPlayDelay);
+            }
+            
+            pauseAutoPlay() {
+                clearInterval(this.autoPlayInterval);
+            }
         }
+
+        // Inicializar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            // Carrusel de testimonios
+            const testimonialCarousel = new UniversalCarousel(
+                document.querySelector('.testimonials .carousel-container')
+            );
+            
+            // Carrusel del equipo
+            const teamCarousel = new UniversalCarousel(
+                document.querySelector('.team .carousel-container')
+            );
+            
+            // Carrusel de la galería
+            const galleryCarousel = new GalleryCarousel(
+                document.querySelector('.gallery-container')
+            );
+        });
     </script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </body>
