@@ -202,6 +202,18 @@
             margin-bottom: 20px;
             text-align: center;
             color: var(--primary-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary);
         }
 
         .section-subtitle {
@@ -700,26 +712,34 @@
             color: var(--primary);
         }
 
-        /* Gallery Section */
+        /* Gallery Section - Convertida a Carrusel */
         .gallery {
             background-color: var(--gray);
         }
 
         .gallery-container {
-            margin-top: 50px;
+            max-width: 1000px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+        .gallery-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 0 15px;
         }
 
         .gallery-item {
             position: relative;
             border-radius: 10px;
             overflow: hidden;
-            height: 250px;
+            height: 400px;
             cursor: pointer;
         }
 
@@ -728,10 +748,6 @@
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
         }
 
         .gallery-overlay {
@@ -744,25 +760,68 @@
             display: flex;
             align-items: flex-end;
             padding: 20px;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .gallery-overlay {
             opacity: 1;
         }
 
         .gallery-caption {
             color: var(--light);
-            transform: translateY(20px);
+            transform: translateY(0);
             transition: var(--transition);
         }
 
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
+        .gallery-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(231, 84, 128, 0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
 
-        /* Testimonials Section */
+        .gallery-btn:hover {
+            background: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-btn.prev {
+            left: 10px;
+        }
+
+        .gallery-btn.next {
+            right: 10px;
+        }
+
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            background: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background: var(--primary);
+        }
+
+        /* Testimonials Section - Estadísticas optimizadas */
         .testimonials {
             background-color: var(--light);
         }
@@ -777,10 +836,12 @@
 
         .stat-card {
             background: var(--light);
-            padding: 30px;
+            padding: 25px;
             border-radius: 10px;
             text-align: center;
             min-width: 150px;
+            flex: 1;
+            max-width: 180px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
@@ -797,7 +858,7 @@
             color: #666;
         }
 
-        /* Nuevos estilos para los carruseles */
+        /* Carrusel de testimonios */
         .carousel-container {
             position: relative;
             max-width: 1000px;
@@ -1309,6 +1370,10 @@
             .brand-tagline {
                 font-size: 0.65rem;
             }
+            
+            .gallery-item {
+                height: 350px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1342,18 +1407,33 @@
                 font-size: 0.9rem;
             }
 
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-
+            /* Estadísticas optimizadas para móvil */
             .testimonials-stats {
+                display: flex;
                 flex-wrap: nowrap;
-                justify-content: flex-start;
+                overflow-x: auto;
                 padding: 0 20px 20px;
+                justify-content: flex-start;
+                scrollbar-width: none;
+            }
+            
+            .testimonials-stats::-webkit-scrollbar {
+                display: none;
             }
             
             .stat-card {
-                min-width: 200px;
+                min-width: 140px;
+                flex: 0 0 auto;
+                margin-right: 15px;
+                padding: 15px;
+            }
+            
+            .stat-card:last-child {
+                margin-right: 0;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
             }
 
             /* Ocultar promo banner en móviles */
@@ -1373,6 +1453,10 @@
             }
             
             .team-member-image {
+                height: 300px;
+            }
+            
+            .gallery-item {
                 height: 300px;
             }
         }
@@ -1419,15 +1503,6 @@
                 font-size: 1.3rem;
             }
 
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .gallery-item {
-                height: 200px;
-            }
-
             .promo-banner {
                 flex-direction: column;
                 gap: 10px;
@@ -1451,6 +1526,10 @@
             }
             
             .team-member-image {
+                height: 250px;
+            }
+            
+            .gallery-item {
                 height: 250px;
             }
         }
@@ -1865,91 +1944,119 @@
         </div>
     </section>
     
-    <!-- Gallery Section -->
+    <!-- Gallery Section - Convertida a Carrusel -->
     <section class="section gallery" id="gallery">
         <div class="container">
             <h2 class="section-title">Nuestros Trabajos</h2>
             <p class="section-subtitle">Algunos ejemplos de nuestros servicios realizados a clientes satisfechos</p>
             
             <div class="gallery-container">
-                <div class="gallery-grid">
-                    <!-- Image 1 -->
-                    <div class="gallery-item">
-                        <picture>
-                            <source srcset="assets/img/gallery/trabajo-1.webp" type="image/webp">
-                            <source srcset="assets/img/gallery/trabajo-1.jpg" type="image/jpeg"> 
-                            <img src="assets/img/gallery/trabajo-1.jpg" alt="Tinte profesional - Cliente María" width="400" height="250" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">Tinte profesional - Cliente María</div>
+                <div class="gallery-track">
+                    <!-- Slide 1 -->
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="assets/img/gallery/trabajo-1.webp" type="image/webp">
+                                <source srcset="assets/img/gallery/trabajo-1.jpg" type="image/jpeg"> 
+                                <img src="assets/img/gallery/trabajo-1.jpg" alt="Tinte profesional - Cliente María" width="600" height="400" loading="lazy">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-caption">Tinte profesional - Cliente María</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Image 2 -->
-                    <div class="gallery-item">
-                        <picture>
-                            <source srcset="assets/img/gallery/trabajo-2.webp" type="image/webp">
-                            <source srcset="assets/img/gallery/trabajo-2.jpg" type="image/jpeg"> 
-                            <img src="assets/img/gallery/trabajo-2.jpg" alt="Peinado para boda - Cliente Ana" width="400" height="250" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">Peinado para boda - Cliente Ana</div>
+                    <!-- Slide 2 -->
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="assets/img/gallery/trabajo-2.webp" type="image/webp">
+                                <source srcset="assets/img/gallery/trabajo-2.jpg" type="image/jpeg"> 
+                                <img src="assets/img/gallery/trabajo-2.jpg" alt="Peinado para boda - Cliente Ana" width="600" height="400" loading="lazy">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-caption">Peinado para boda - Cliente Ana</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Image 3 -->
-                    <div class="gallery-item">
-                        <picture>
-                            <source srcset="assets/img/gallery/trabajo-3.webp" type="image/webp">
-                            <source srcset="assets/img/gallery/trabajo-3.jpg" type="image/jpeg"> 
-                            <img src="assets/img/gallery/trabajo-3.jpg" alt="Corte moderno - Cliente Carlos" width="400" height="250" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">Corte moderno - Cliente Carlos</div>
+                    <!-- Slide 3 -->
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="assets/img/gallery/trabajo-3.webp" type="image/webp">
+                                <source srcset="assets/img/gallery/trabajo-3.jpg" type="image/jpeg"> 
+                                <img src="assets/img/gallery/trabajo-3.jpg" alt="Corte moderno - Cliente Carlos" width="600" height="400" loading="lazy">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-caption">Corte moderno - Cliente Carlos</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Image 4 -->
-                    <div class="gallery-item">
-                        <picture>
-                            <source srcset="assets/img/gallery/trabajo-4.webp" type="image/webp">
-                            <source srcset="assets/img/gallery/trabajo-4.jpg" type="image/jpeg"> 
-                            <img src="assets/img/gallery/trabajo-4.jpg" alt="Tratamiento de keratina - Cliente Laura" width="400" height="250" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">Tratamiento de keratina - Cliente Laura</div>
+                    <!-- Slide 4 -->
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="assets/img/gallery/trabajo-4.webp" type="image/webp">
+                                <source srcset="assets/img/gallery/trabajo-4.jpg" type="image/jpeg"> 
+                                <img src="assets/img/gallery/trabajo-4.jpg" alt="Tratamiento de keratina - Cliente Laura" width="600" height="400" loading="lazy">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-caption">Tratamiento de keratina - Cliente Laura</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Image 5 -->
-                    <div class="gallery-item">
-                        <picture>
-                            <source srcset="assets/img/gallery/trabajo-5.webp" type="image/webp">
-                            <source srcset="assets/img/gallery/trabajo-5.jpg" type="image/jpeg"> 
-                            <img src="assets/img/gallery/trabajo-5.jpg" alt="Peinado para quinceañera - Cliente Sofía" width="400" height="250" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">Peinado para quinceañera - Cliente Sofía</div>
+                    <!-- Slide 5 -->
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="assets/img/gallery/trabajo-5.webp" type="image/webp">
+                                <source srcset="assets/img/gallery/trabajo-5.jpg" type="image/jpeg"> 
+                                <img src="assets/img/gallery/trabajo-5.jpg" alt="Peinado para quinceañera - Cliente Sofía" width="600" height="400" loading="lazy">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-caption">Peinado para quinceañera - Cliente Sofía</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- Image 6 -->
-                    <div class="gallery-item">
-                        <picture>
-                            <source srcset="assets/img/gallery/trabajo-6.webp" type="image/webp">
-                            <source srcset="assets/img/gallery/trabajo-6.jpg" type="image/jpeg"> 
-                            <img src="assets/img/gallery/trabajo-6.jpg" alt="Color fantasía - Cliente Daniela" width="400" height="250" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay">
-                            <div class="gallery-caption">Color fantasía - Cliente Daniela</div>
+                    <!-- Slide 6 -->
+                    <div class="gallery-slide">
+                        <div class="gallery-item">
+                            <picture>
+                                <source srcset="assets/img/gallery/trabajo-6.webp" type="image/webp">
+                                <source srcset="assets/img/gallery/trabajo-6.jpg" type="image/jpeg"> 
+                                <img src="assets/img/gallery/trabajo-6.jpg" alt="Color fantasía - Cliente Daniela" width="600" height="400" loading="lazy">
+                            </picture>
+                            <div class="gallery-overlay">
+                                <div class="gallery-caption">Color fantasía - Cliente Daniela</div>
+                            </div>
                         </div>
                     </div>
+                </div>
+                
+                <button class="gallery-btn prev" aria-label="Imagen anterior">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-btn next" aria-label="Imagen siguiente">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <div class="gallery-dots">
+                    <span class="gallery-dot active" data-index="0"></span>
+                    <span class="gallery-dot" data-index="1"></span>
+                    <span class="gallery-dot" data-index="2"></span>
+                    <span class="gallery-dot" data-index="3"></span>
+                    <span class="gallery-dot" data-index="4"></span>
+                    <span class="gallery-dot" data-index="5"></span>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Testimonials Section -->
+    <!-- Testimonials Section - Estadísticas optimizadas -->
     <section class="section testimonials">
         <div class="container">
             <h2 class="section-title">Clientes Satisfechas</h2>
@@ -2391,22 +2498,18 @@
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // Carrusel de testimonios
-        class TestimonialsCarousel {
+        // Carrusel Universal
+        class UniversalCarousel {
             constructor(container) {
                 this.container = container;
                 this.track = container.querySelector('.carousel-track');
                 this.slides = Array.from(container.querySelectorAll('.carousel-slide'));
                 this.dots = Array.from(container.querySelectorAll('.carousel-dot'));
-                this.prevBtn = container.querySelector('.prev');
-                this.nextBtn = container.querySelector('.next');
+                this.prevBtn = container.querySelector('.carousel-btn.prev');
+                this.nextBtn = container.querySelector('.carousel-btn.next');
                 this.currentIndex = 0;
                 this.autoPlayInterval = null;
                 this.autoPlayDelay = 5000;
-                this.isDragging = false;
-                this.startPos = 0;
-                this.currentTranslate = 0;
-                this.prevTranslate = 0;
                 
                 this.init();
             }
@@ -2414,8 +2517,8 @@
             init() {
                 this.setSlideWidth();
                 this.setupEventListeners();
+                this.goToSlide(this.currentIndex);
                 this.startAutoPlay();
-                this.goToSlide(0);
             }
             
             setSlideWidth() {
@@ -2438,88 +2541,14 @@
                     });
                 });
                 
-                // Eventos de touch para dispositivos móviles
-                this.track.addEventListener('touchstart', this.touchStart.bind(this));
-                this.track.addEventListener('touchmove', this.touchMove.bind(this));
-                this.track.addEventListener('touchend', this.touchEnd.bind(this));
-                
-                // Eventos de mouse para desktop
-                this.track.addEventListener('mousedown', this.touchStart.bind(this));
-                this.track.addEventListener('mousemove', this.touchMove.bind(this));
-                this.track.addEventListener('mouseup', this.touchEnd.bind(this));
-                this.track.addEventListener('mouseleave', this.touchEnd.bind(this));
-                
-                // Redimensionar ventana
-                window.addEventListener('resize', () => {
-                    this.setSlideWidth();
-                    this.goToSlide(this.currentIndex);
-                });
-                
                 // Pausar autoplay al interactuar
-                this.container.addEventListener('mouseenter', () => {
-                    if (this.autoPlayInterval) {
-                        this.pauseAutoPlay();
-                    }
-                });
-                
-                this.container.addEventListener('mouseleave', () => {
-                    if (this.autoPlayInterval) {
-                        this.startAutoPlay();
-                    }
-                });
-            }
-            
-            touchStart(e) {
-                if (e.type === 'mousedown') {
-                    e.preventDefault();
-                    this.isDragging = true;
-                    this.startPos = e.clientX;
-                } else {
-                    this.startPos = e.touches[0].clientX;
-                }
-                
-                this.prevTranslate = this.currentTranslate;
-                this.track.style.transition = 'none';
-                
-                // Pausar autoplay durante el arrastre
-                if (this.autoPlayInterval) {
-                    this.pauseAutoPlay();
-                }
-            }
-            
-            touchMove(e) {
-                if (e.type === 'mousemove' && !this.isDragging) return;
-                
-                const currentPosition = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
-                const diff = currentPosition - this.startPos;
-                this.currentTranslate = this.prevTranslate + diff;
-                this.track.style.transform = `translateX(${this.currentTranslate}px)`;
-            }
-            
-            touchEnd() {
-                this.isDragging = false;
-                this.track.style.transition = 'transform 0.5s ease';
-                
-                const movedBy = this.currentTranslate - this.prevTranslate;
-                
-                if (movedBy < -50 && this.currentIndex < this.slides.length - 1) {
-                    this.nextSlide();
-                } else if (movedBy > 50 && this.currentIndex > 0) {
-                    this.prevSlide();
-                } else {
-                    this.goToSlide(this.currentIndex);
-                }
-                
-                // Reanudar autoplay
-                if (this.autoPlayInterval) {
-                    this.startAutoPlay();
-                }
+                this.container.addEventListener('mouseenter', () => this.pauseAutoPlay());
+                this.container.addEventListener('mouseleave', () => this.startAutoPlay());
             }
             
             goToSlide(index) {
                 this.currentIndex = index;
-                this.currentTranslate = -this.slides[this.currentIndex].offsetLeft;
-                this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+                this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
                 
                 // Actualizar dots
                 this.updateDots();
@@ -2542,8 +2571,8 @@
             }
             
             updateDots() {
-                this.dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === this.currentIndex);
+                this.dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === this.currentIndex);
                 });
             }
             
@@ -2557,22 +2586,18 @@
             }
         }
         
-        // Carrusel de equipo
-        class TeamCarousel {
+        // Carrusel de Galería
+        class GalleryCarousel {
             constructor(container) {
                 this.container = container;
-                this.track = container.querySelector('.carousel-track');
-                this.slides = Array.from(container.querySelectorAll('.carousel-slide'));
-                this.dots = Array.from(container.querySelectorAll('.carousel-dot'));
-                this.prevBtn = container.querySelector('.prev');
-                this.nextBtn = container.querySelector('.next');
+                this.track = container.querySelector('.gallery-track');
+                this.slides = Array.from(container.querySelectorAll('.gallery-slide'));
+                this.dots = Array.from(container.querySelectorAll('.gallery-dot'));
+                this.prevBtn = container.querySelector('.gallery-btn.prev');
+                this.nextBtn = container.querySelector('.gallery-btn.next');
                 this.currentIndex = 0;
                 this.autoPlayInterval = null;
-                this.autoPlayDelay = 6000;
-                this.isDragging = false;
-                this.startPos = 0;
-                this.currentTranslate = 0;
-                this.prevTranslate = 0;
+                this.autoPlayDelay = 5000;
                 
                 this.init();
             }
@@ -2580,8 +2605,8 @@
             init() {
                 this.setSlideWidth();
                 this.setupEventListeners();
+                this.goToSlide(this.currentIndex);
                 this.startAutoPlay();
-                this.goToSlide(0);
             }
             
             setSlideWidth() {
@@ -2604,88 +2629,14 @@
                     });
                 });
                 
-                // Eventos de touch para dispositivos móviles
-                this.track.addEventListener('touchstart', this.touchStart.bind(this));
-                this.track.addEventListener('touchmove', this.touchMove.bind(this));
-                this.track.addEventListener('touchend', this.touchEnd.bind(this));
-                
-                // Eventos de mouse para desktop
-                this.track.addEventListener('mousedown', this.touchStart.bind(this));
-                this.track.addEventListener('mousemove', this.touchMove.bind(this));
-                this.track.addEventListener('mouseup', this.touchEnd.bind(this));
-                this.track.addEventListener('mouseleave', this.touchEnd.bind(this));
-                
-                // Redimensionar ventana
-                window.addEventListener('resize', () => {
-                    this.setSlideWidth();
-                    this.goToSlide(this.currentIndex);
-                });
-                
                 // Pausar autoplay al interactuar
-                this.container.addEventListener('mouseenter', () => {
-                    if (this.autoPlayInterval) {
-                        this.pauseAutoPlay();
-                    }
-                });
-                
-                this.container.addEventListener('mouseleave', () => {
-                    if (this.autoPlayInterval) {
-                        this.startAutoPlay();
-                    }
-                });
-            }
-            
-            touchStart(e) {
-                if (e.type === 'mousedown') {
-                    e.preventDefault();
-                    this.isDragging = true;
-                    this.startPos = e.clientX;
-                } else {
-                    this.startPos = e.touches[0].clientX;
-                }
-                
-                this.prevTranslate = this.currentTranslate;
-                this.track.style.transition = 'none';
-                
-                // Pausar autoplay durante el arrastre
-                if (this.autoPlayInterval) {
-                    this.pauseAutoPlay();
-                }
-            }
-            
-            touchMove(e) {
-                if (e.type === 'mousemove' && !this.isDragging) return;
-                
-                const currentPosition = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
-                const diff = currentPosition - this.startPos;
-                this.currentTranslate = this.prevTranslate + diff;
-                this.track.style.transform = `translateX(${this.currentTranslate}px)`;
-            }
-            
-            touchEnd() {
-                this.isDragging = false;
-                this.track.style.transition = 'transform 0.5s ease';
-                
-                const movedBy = this.currentTranslate - this.prevTranslate;
-                
-                if (movedBy < -50 && this.currentIndex < this.slides.length - 1) {
-                    this.nextSlide();
-                } else if (movedBy > 50 && this.currentIndex > 0) {
-                    this.prevSlide();
-                } else {
-                    this.goToSlide(this.currentIndex);
-                }
-                
-                // Reanudar autoplay
-                if (this.autoPlayInterval) {
-                    this.startAutoPlay();
-                }
+                this.container.addEventListener('mouseenter', () => this.pauseAutoPlay());
+                this.container.addEventListener('mouseleave', () => this.startAutoPlay());
             }
             
             goToSlide(index) {
                 this.currentIndex = index;
-                this.currentTranslate = -this.slides[this.currentIndex].offsetLeft;
-                this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+                this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
                 
                 // Actualizar dots
                 this.updateDots();
@@ -2708,8 +2659,8 @@
             }
             
             updateDots() {
-                this.dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === this.currentIndex);
+                this.dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === this.currentIndex);
                 });
             }
             
@@ -2726,13 +2677,18 @@
         // Inicializar cuando el DOM esté listo
         document.addEventListener('DOMContentLoaded', () => {
             // Carrusel de testimonios
-            const testimonialCarousel = new TestimonialsCarousel(
+            const testimonialCarousel = new UniversalCarousel(
                 document.querySelector('.testimonials .carousel-container')
             );
             
             // Carrusel del equipo
-            const teamCarousel = new TeamCarousel(
+            const teamCarousel = new UniversalCarousel(
                 document.querySelector('.team .carousel-container')
+            );
+            
+            // Carrusel de la galería
+            const galleryCarousel = new GalleryCarousel(
+                document.querySelector('.gallery-container')
             );
         });
     </script>
