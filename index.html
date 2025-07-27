@@ -932,12 +932,17 @@
         .team-member-image {
             height: 350px;
             overflow: hidden;
+            background: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .team-member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
             transition: var(--transition);
         }
 
@@ -1623,8 +1628,8 @@
                 
                 <div class="about-content">
                     <h3 class="about-title">Edemi Salón Spa</h3>
-                    <p class="about-text">Somos un salón de belleza especializado en tintes profesionales, tratamientos capilares y peinados para eventos especiales como bodas, quinceañeras y graduaciones.</p>
-                    <p class="about-text">Nuestro equipo de profesionales altamente capacitados está comprometido en brindarte un servicio personalizado utilizando productos de la más alta calidad.</p>
+                    <div class="about-text">Somos un salón de belleza especializado en tintes profesionales, tratamientos capilares y peinados para eventos especiales como bodas, quinceañeras y graduaciones.</div>
+                    <div class="about-text">Nuestro equipo de profesionales altamente capacitados está comprometido en brindarte un servicio personalizado utilizando productos de la más alta calidad.</div>
                     
                     <div class="about-features">
                         <div class="about-feature">
@@ -1633,7 +1638,7 @@
                             </div>
                             <div>
                                 <h4>Productos Premium</h4>
-                                <p>Utilizamos marcas reconocidas internacionalmente para cuidar tu cabello.</p>
+                                <div>Utilizamos marcas reconocidas internacionalmente para cuidar tu cabello.</div>
                             </div>
                         </div>
                         
@@ -1643,7 +1648,7 @@
                             </div>
                             <div>
                                 <h4>Resultados Garantizados</h4>
-                                <p>Nuestros clientes quedan satisfechos con los resultados de nuestros servicios.</p>
+                                <div>Nuestros clientes quedan satisfechos con los resultados de nuestros servicios.</div>
                             </div>
                         </div>
                         
@@ -1653,7 +1658,7 @@
                             </div>
                             <div>
                                 <h4>Atención Personalizada</h4>
-                                <p>Cada cliente recibe un trato único según sus necesidades y preferencias.</p>
+                                <div>Cada cliente recibe un trato único según sus necesidades y preferencias.</div>
                             </div>
                         </div>
                     </div>
@@ -1692,7 +1697,7 @@
                                 <span><i class="far fa-clock"></i> 2-3 horas</span>
                                 <span><i class="fas fa-calendar-alt"></i> Reserva con anticipación</span>
                             </div>
-                            <p class="service-description">Peinados elegantes y duraderos para el día más especial. Incluye prueba de peinado previa.</p>
+                            <div class="service-description">Peinados elegantes y duraderos para el día más especial. Incluye prueba de peinado previa.</div>
                             <div class="service-footer">
                                 <p class="service-price">Desde S/ 180</p>
                                 <a href="https://wa.me/51974161367?text=¡Hola! Quiero información sobre peinados para bodas" class="btn btn-primary">Reservar</a>
@@ -1715,7 +1720,7 @@
                                 <span><i class="far fa-clock"></i> 2-4 horas</span>
                                 <span><i class="fas fa-star"></i> Incluye tocado</span>
                             </div>
-                            <p class="service-description">Peinados sofisticados para celebrar tus 15 años. Diseños personalizados según tu vestido.</p>
+                            <div class="service-description">Peinados sofisticados para celebrar tus 15 años. Diseños personalizados según tu vestido.</div>
                             <div class="service-footer">
                                 <p class="service-price">Desde S/ 200</p>
                                 <a href="https://wa.me/51974161367?text=¡Hola! Quiero información sobre peinados para quinceañeras" class="btn btn-primary">Reservar</a>
@@ -1738,7 +1743,7 @@
                                 <span><i class="far fa-clock"></i> 1-2 horas</span>
                                 <span><i class="fas fa-users"></i> Descuentos grupales</span>
                             </div>
-                            <p class="service-description">Peinados juveniles y modernos para tu graduación. Ofrecemos servicio grupal para promociones.</p>
+                            <div class="service-description">Peinados juveniles y modernos para tu graduación. Ofrecemos servicio grupal para promociones.</div>
                             <div class="service-footer">
                                 <p class="service-price">Desde S/ 150</p>
                                 <a href="https://wa.me/51974161367?text=¡Hola! Quiero información sobre peinados para graduaciones" class="btn btn-primary">Reservar</a>
@@ -1766,7 +1771,7 @@
                                 <span><i class="far fa-clock"></i> 2-3 horas</span>
                                 <span><i class="fas fa-check-circle"></i> Duración 8 semanas</span>
                             </div>
-                            <p class="service-description">Tintes de alta calidad que no dañan tu cabello, con técnicas de aplicación profesional para un color uniforme y duradero.</p>
+                            <div class="service-description">Tintes de alta calidad que no dañan tu cabello, con técnicas de aplicación profesional para un color uniforme y duradero.</div>
                             <div class="service-footer">
                                 <p class="service-price">Desde S/ 120</p>
                                 <a href="https://wa.me/51974161367?text=¡Hola! Quiero información sobre tintes profesionales" class="btn btn-primary">Reservar</a>
@@ -1789,7 +1794,7 @@
                                 <span><i class="far fa-clock"></i> 3-4 horas</span>
                                 <span><i class="fas fa-spa"></i> Efecto natural</span>
                             </div>
-                            <p class="service-description">Técnica de mechas que aclara estratégicamente el cabello para un efecto solar y natural.</p>
+                            <div class="service-description">Técnica de mechas que aclara estratégicamente el cabello para un efecto solar y natural.</div>
                             <div class="service-footer">
                                 <p class="service-price">Desde S/ 150</p>
                                 <a href="https://wa.me/51974161367?text=¡Hola! Quiero información sobre mechas californianas" class="btn btn-primary">Reservar</a>
@@ -1812,7 +1817,7 @@
                                 <span><i class="far fa-clock"></i> 2-3 horas</span>
                                 <span><i class="fas fa-magic"></i> Colores vibrantes</span>
                             </div>
-                            <p class="service-description">Atrevete con colores vibrantes como rosas, azules o morados. Usamos tintes semipermanentes de calidad.</p>
+                            <div class="service-description">Atrevete con colores vibrantes como rosas, azules o morados. Usamos tintes semipermanentes de calidad.</div>
                             <div class="service-footer">
                                 <p class="service-price">Desde S/ 160</p>
                                 <a href="https://wa.me/51974161367?text=¡Hola! Quiero información sobre color fantasía" class="btn btn-primary">Reservar</a>
@@ -1840,7 +1845,7 @@
                                 <span><i class="far fa-clock"></i> 3-4 horas</span>
                                 <span><i class="fas fa-check-circle"></i> Dura 3-4 meses</span>
                             </div>
-                            <p class="service-description">Elimina el frizz y alisa el cabello de forma natural. Ideal para cabellos rizados o rebeldes.</p>
+                            <div class="service-description">Elimina el frizz y alisa el cabello de forma natural. Ideal para cabellos rizados o rebeldes.</div>
                             <div class="service-footer">
                                 <p class="service-price">Desde S/ 200</p>
                                 <a href="https://wa.me/51974161367?text=¡Hola! Quiero información sobre tratamiento de keratina" class="btn btn-primary">Reservar</a>
@@ -1863,7 +1868,7 @@
                                 <span><i class="far fa-clock"></i> 2-3 horas</span>
                                 <span><i class="fas fa-heart"></i> Reconstruye el cabello</span>
                             </div>
-                            <p class="service-description">Repara el cabello dañado, devolviéndole suavidad, brillo y vitalidad desde la primera aplicación.</p>
+                            <div class="service-description">Repara el cabello dañado, devolviéndole suavidad, brillo y vitalidad desde la primera aplicación.</div>
                             <div class="service-footer">
                                 <p class="service-price">Desde S/ 180</p>
                                 <a href="https://wa.me/51974161367?text=¡Hola! Quiero información sobre botox capilar" class="btn btn-primary">Reservar</a>
@@ -1886,7 +1891,7 @@
                                 <span><i class="far fa-clock"></i> 1-2 horas</span>
                                 <span><i class="fas fa-tint"></i> Nutre en profundidad</span>
                             </div>
-                            <p class="service-description">Tratamiento intensivo que nutre y repara el cabello seco o maltratado por químicos o calor.</p>
+                            <div class="service-description">Tratamiento intensivo que nutre y repara el cabello seco o maltratado por químicos o calor.</div>
                             <div class="service-footer">
                                 <p class="service-price">Desde S/ 100</p>
                                 <a href="https://wa.me/51974161367?text=¡Hola! Quiero información sobre hidratación profunda" class="btn btn-primary">Reservar</a>
@@ -1923,17 +1928,17 @@
                 <div class="advice-content">
                     <div class="advice-item">
                         <h3><i class="fas fa-face-meh"></i> Rostro Ovalado</h3>
-                        <p>Te recomendamos cortes a la altura de los hombros o más largos, con capas suaves. Colores cálidos como mieles y cobrizos.</p>
+                        <div>Te recomendamos cortes a la altura de los hombros o más largos, con capas suaves. Colores cálidos como mieles y cobrizos.</div>
                     </div>
                     
                     <div class="advice-item">
                         <h3><i class="fas fa-face-smile"></i> Rostro Redondo</h3>
-                        <p>Ideal cortes asimétricos o con volumen en la parte superior. Colores oscuros en raíces que se aclaran hacia las puntas.</p>
+                        <div>Ideal cortes asimétricos o con volumen en la parte superior. Colores oscuros en raíces que se aclaran hacia las puntas.</div>
                     </div>
                     
                     <div class="advice-item">
                         <h3><i class="fas fa-face-frown"></i> Rostro Cuadrado</h3>
-                        <p>Peinados con ondas suaves o cortes en capas que suavicen los ángulos. Colores rubios ceniza o caramelo.</p>
+                        <div>Peinados con ondas suaves o cortes en capas que suavicen los ángulos. Colores rubios ceniza o caramelo.</div>
                     </div>
                     
                     <a href="https://wa.me/51974161367?text=¡Hola! Quiero una asesoría para elegir mi próximo corte y color" class="btn btn-primary">
@@ -2087,9 +2092,9 @@
                                 <source srcset="assets/img/testimonials/cliente-1.jpg" type="image/jpeg"> 
                                 <img src="assets/img/testimonials/cliente-1.jpg" alt="Cliente María" class="testimonial-avatar" width="100" height="100" loading="lazy">
                             </picture>
-                            <p class="testimonial-text">El mejor salón de Huancayo. Hace años que confío en ellos para mis tintes y nunca me han defraudado. Mi cabello luce espectacular.</p>
+                            <div class="testimonial-text">El mejor salón de Huancayo. Hace años que confío en ellos para mis tintes y nunca me han defraudado. Mi cabello luce espectacular.</div>
                             <h4 class="testimonial-author">María Fernández</h4>
-                            <p class="testimonial-role">Cliente frecuente</p>
+                            <div class="testimonial-role">Cliente frecuente</div>
                         </div>
                     </div>
                     
@@ -2101,9 +2106,9 @@
                                 <source srcset="assets/img/testimonials/cliente-2.jpg" type="image/jpeg"> 
                                 <img src="assets/img/testimonials/cliente-2.jpg" alt="Cliente Ana" class="testimonial-avatar" width="100" height="100" loading="lazy">
                             </picture>
-                            <p class="testimonial-text">Para mi boda me hicieron un peinado espectacular que duró toda la noche. Las fotos quedaron increíbles, ¡gracias!</p>
+                            <div class="testimonial-text">Para mi boda me hicieron un peinado espectacular que duró toda la noche. Las fotos quedaron increíbles, ¡gracias!</div>
                             <h4 class="testimonial-author">Ana Torres</h4>
-                            <p class="testimonial-role">Novia</p>
+                            <div class="testimonial-role">Novia</div>
                         </div>
                     </div>
                     
@@ -2115,9 +2120,9 @@
                                 <source srcset="assets/img/testimonials/cliente-3.jpg" type="image/jpeg"> 
                                 <img src="assets/img/testimonials/cliente-3.jpg" alt="Cliente Pari" class="testimonial-avatar" width="100" height="100" loading="lazy">
                             </picture>
-                            <p class="testimonial-text">Soy cliente desde hace años. Siempre me dan excelentes recomendaciones para mi cabello y los resultados son perfectos.</p>
+                            <div class="testimonial-text">Soy cliente desde hace años. Siempre me dan excelentes recomendaciones para mi cabello y los resultados son perfectos.</div>
                             <h4 class="testimonial-author">Pari</h4>
-                            <p class="testimonial-role">Cliente frecuente</p>
+                            <div class="testimonial-role">Cliente frecuente</div>
                         </div>
                     </div>
                 </div>
@@ -2151,15 +2156,17 @@
                         <div class="team-slide">
                             <div class="team-member-image">
                                 <picture>
+                                    <source media="(min-width: 769px)" srcset="assets/img/team/eva-suarez-desktop.webp" type="image/webp">
+                                    <source media="(min-width: 769px)" srcset="assets/img/team/eva-suarez-desktop.jpg" type="image/jpeg"> 
                                     <source srcset="assets/img/team/eva-suarez.webp" type="image/webp">
                                     <source srcset="assets/img/team/eva-suarez.jpg" type="image/jpeg"> 
-                                    <img src="assets/img/team/eva-suarez.jpg" alt="Eva Suarez - Fundadora" width="400" height="350" loading="lazy">
+                                    <img src="assets/img/team/eva-suarez.jpg" alt="Eva Suarez - Fundadora" loading="lazy">
                                 </picture>
                             </div>
                             <div class="team-member-content">
                                 <h3 class="team-member-name">Eva Suarez</h3>
-                                <p class="team-member-role">Fundadora & Especialista en Color</p>
-                                <p class="team-member-bio">15 años de experiencia en tintes y transformaciones capilares. Certificada en las marcas más prestigiosas.</p>
+                                <div class="team-member-role">Fundadora & Especialista en Color</div>
+                                <div class="team-member-bio">15 años de experiencia en tintes y transformaciones capilares. Certificada en las marcas más prestigiosas.</div>
                                 <a href="https://wa.me/51974161367" class="team-consult-btn">
                                     <i class="fab fa-whatsapp"></i> Consultar
                                 </a>
@@ -2172,15 +2179,17 @@
                         <div class="team-slide">
                             <div class="team-member-image">
                                 <picture>
+                                    <source media="(min-width: 769px)" srcset="assets/img/team/damaris-desktop.webp" type="image/webp">
+                                    <source media="(min-width: 769px)" srcset="assets/img/team/damaris-desktop.jpg" type="image/jpeg"> 
                                     <source srcset="assets/img/team/damaris.webp" type="image/webp">
                                     <source srcset="assets/img/team/damaris.jpg" type="image/jpeg"> 
-                                    <img src="assets/img/team/damaris.jpg" alt="Damaris - Peinados para eventos" width="400" height="350" loading="lazy">
+                                    <img src="assets/img/team/damaris.jpg" alt="Damaris - Peinados para eventos" loading="lazy">
                                 </picture>
                             </div>
                             <div class="team-member-content">
                                 <h3 class="team-member-name">Damaris</h3>
-                                <p class="team-member-role">Especialista en Peinados para Eventos</p>
-                                <p class="team-member-bio">Experta en crear peinados duraderos y elegantes para bodas, quinceañeras y graduaciones.</p>
+                                <div class="team-member-role">Especialista en Peinados para Eventos</div>
+                                <div class="team-member-bio">Experta en crear peinados duraderos y elegantes para bodas, quinceañeras y graduaciones.</div>
                                 <a href="https://wa.me/51974161367" class="team-consult-btn">
                                     <i class="fab fa-whatsapp"></i> Consultar
                                 </a>
@@ -2218,7 +2227,7 @@
                         </div>
                         <div class="contact-info-content">
                             <h3>Dirección</h3>
-                            <p>Av. Evitamiento 123, Huancayo, Junín</p>
+                            <div>Av. Evitamiento 123, Huancayo, Junín</div>
                         </div>
                     </div>
                     
@@ -2228,7 +2237,7 @@
                         </div>
                         <div class="contact-info-content">
                             <h3>Teléfono</h3>
-                            <p><a href="tel:+51974161367">974 161 367</a></p>
+                            <div><a href="tel:+51974161367">974 161 367</a></div>
                         </div>
                     </div>
                     
@@ -2238,7 +2247,7 @@
                         </div>
                         <div class="contact-info-content">
                             <h3>Email</h3>
-                            <p><a href="mailto:edemisalonspa@gmail.com">edemisalonspa@gmail.com</a></p>
+                            <div><a href="mailto:edemisalonspa@gmail.com">edemisalonspa@gmail.com</a></div>
                         </div>
                     </div>
                     
@@ -2248,7 +2257,7 @@
                         </div>
                         <div class="contact-info-content">
                             <h3>Horario</h3>
-                            <p>Lunes a Sábado: 9:00 am - 8:00 pm</p>
+                            <div>Lunes a Sábado: 9:00 am - 8:00 pm</div>
                         </div>
                     </div>
                     
@@ -2258,7 +2267,7 @@
                         </div>
                         <div class="contact-info-content">
                             <h3>WhatsApp</h3>
-                            <p><a href="https://wa.me/51974161367">Envíanos un mensaje directo</a></p>
+                            <div><a href="https://wa.me/51974161367">Envíanos un mensaje directo</a></div>
                         </div>
                     </div>
                 </div>
@@ -2331,7 +2340,7 @@
                     <div class="footer-brand">
                         <img src="assets/img/logo/logo-edemi-rectangular.webp" alt="Edemi Salón Spa" class="footer-logo" width="200" height="50" loading="lazy">
                     </div>
-                    <p class="footer-about">Más de 15 años ofreciendo servicios profesionales de belleza en Huancayo. Especialistas en tintes, tratamientos capilares y peinados para eventos.</p>
+                    <div class="footer-about">Más de 15 años ofreciendo servicios profesionales de belleza en Huancayo. Especialistas en tintes, tratamientos capilares y peinados para eventos.</div>
                     <div class="footer-social">
                         <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
